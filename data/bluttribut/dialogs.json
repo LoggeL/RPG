@@ -1,32 +1,71 @@
 {
     "hans": {
+        "conditional": [
+            {
+                "conditions": {
+                    "hasFlag": "johann_distracted"
+                },
+                "text": "Du hast es geschafft! Der Weg ist frei. Beeil dich, sie braucht deine Hilfe!",
+                "choices": []
+            },
+            {
+                "conditions": {
+                    "hasItem": "garlic"
+                },
+                "text": "Du hast den Knoblauch! Zeig ihn Johann. Der wird sich wünschen, nie geboren zu sein!",
+                "choices": []
+            },
+            {
+                "conditions": {
+                    "hasFlag": "met_johann"
+                },
+                "text": "Dieser Johann ist hartnäckig, was? Ich hab da eine Idee...",
+                "choices": [
+                    {
+                        "text": "Was für eine Idee?",
+                        "next": "hans_help"
+                    }
+                ]
+            }
+        ],
         "default": {
-            "text": "Hey! Wir müssen Emma retten! Aber pass auf, Johann bewacht das Tor.",
+            "text": "Hey! Wir müssen Emma retten! Aber pass auf, Johann bewacht das Tor. Sprich erst mit ihm, dann können wir planen.",
             "actions": {
                 "startQuest": "bluttribut_main"
             },
             "choices": [
                 {
-                    "text": "Hast du etwas, das helfen könnte?",
-                    "next": "hans_help"
+                    "text": "Ich werde mit Johann sprechen."
                 }
             ]
         },
         "hans_help": {
-            "text": "Ich habe diesen Knoblauch. Vielleicht hilft das gegen den Torwächter?",
+            "text": "Vampire hassen Knoblauch! Hier, nimm diesen. Zeig ihn Johann und er wird die Flucht ergreifen!",
             "actions": {
                 "giveItem": "garlic"
             },
             "choices": [
                 {
-                    "text": "Danke, Hans. Ich werde es versuchen."
+                    "text": "Danke, Hans!"
                 }
             ]
         }
     },
     "johann": {
+        "conditional": [
+            {
+                "conditions": {
+                    "hasFlag": "johann_distracted"
+                },
+                "text": "(Johann ist geflohen...)",
+                "choices": []
+            }
+        ],
         "default": {
-            "text": "Was? Wer da? Ich habe keine Zeit für Besucher! Der Graf bereitet das Fest vor.",
+            "text": "Was? Wer da? Ich habe keine Zeit für Besucher! Der Graf bereitet das Fest vor. Niemand darf passieren!",
+            "actions": {
+                "setFlag": "met_johann"
+            },
             "choices": [
                 {
                     "text": "Ich muss zum Grafen. (Einschüchtern)",
@@ -35,29 +74,28 @@
                 {
                     "text": "[Knoblauch zeigen] Riech mal hieran!",
                     "condition": "hasItem:garlic",
-                    "actions": {
-                        "removeItem": "garlic",
-                        "setFlag": "johann_distracted"
-                    },
                     "next": "johann_flee"
+                },
+                {
+                    "text": "Ich komme später wieder."
                 }
             ]
         },
         "johann_threaten": {
-            "text": "N-nein! Bitte! Ich bin nur der Sekretär! Der Schlüssel zum Hintereingang liegt dort drüben!",
-            "actions": {
-                "giveItem": "manor_key"
-            },
+            "text": "N-nein! Bitte! Ich bin nur der Sekretär! D-Der Schlüssel ist im Tor eingesteckt... aber ich werde hier nicht weichen!",
             "choices": [
                 {
-                    "text": "Danke."
+                    "text": "Wir werden sehen..."
                 }
             ]
         },
         "johann_flee": {
             "text": "Aaaah! Dieser Gestank! Weg! Ich muss weg!",
             "actions": {
-                "giveItem": "manor_key"
+                "removeItem": "garlic",
+                "setFlag": "johann_distracted",
+                "giveItem": "manor_key",
+                "removeNpc": "johann"
             },
             "choices": [
                 {
@@ -67,11 +105,33 @@
         }
     },
     "anastasia": {
+        "conditional": [
+            {
+                "conditions": {
+                    "hasItem": "vampire_book"
+                },
+                "text": "Ihr habt das Wissen. Nun braucht Ihr nur noch den Dolch aus der Gruft außerhalb des Anwesens.",
+                "choices": []
+            }
+        ],
         "default": {
             "text": "Ein Lebender... Hier an diesem Ort des Todes? Seid Ihr auch gekommen, um 'geehrt' zu werden?",
             "choices": [
                 {
                     "text": "Ich suche Emma. Und eine Schwäche des Grafen.",
+                    "next": "anastasia_help"
+                },
+                {
+                    "text": "Wer bist du?",
+                    "next": "anastasia_story"
+                }
+            ]
+        },
+        "anastasia_story": {
+            "text": "Ich war einst wie Emma... eine 'Auserwählte'. Doch der Graf wurde meiner überdrüssig. Nun wandle ich als Geist, gefangen zwischen den Welten.",
+            "choices": [
+                {
+                    "text": "Das tut mir leid. Kannst du mir helfen, Emma zu retten?",
                     "next": "anastasia_help"
                 }
             ]
@@ -90,21 +150,43 @@
             ]
         },
         "anastasia_dagger": {
-            "text": "Sucht den Dolch in der alten Gruft draußen. Nur er kann die Verbindung trennen."
+            "text": "Sucht den Dolch in der alten Gruft draußen. Nur er kann die Verbindung trennen. Beeilt Euch - das Fest beginnt bei Sonnenuntergang!"
         }
     },
     "harras": {
+        "conditional": [
+            {
+                "conditions": {
+                    "hasFlag": "quest:bluttribut_main:completed"
+                },
+                "text": "(Graf Harras liegt besiegt am Boden...)",
+                "choices": []
+            }
+        ],
         "default": {
-            "text": "Willkommen, mein unerwarteter Gast. Ihr kommt gerade rechtzeitig, um Zeuge der Ewigkeit zu werden.",
+            "text": "Willkommen, mein unerwarteter Gast. Ihr kommt gerade rechtzeitig, um Zeuge der Ewigkeit zu werden. Emma wird heute Nacht unsterblich!",
             "choices": [
                 {
                     "text": "Lass Emma gehen, Harras!",
+                    "next": "harras_fight"
+                },
+                {
+                    "text": "Was hast du mit ihr vor?",
+                    "next": "harras_explain"
+                }
+            ]
+        },
+        "harras_explain": {
+            "text": "Sie wird mir gleichgestellt! Ein ewiges Leben an meiner Seite. Ist das nicht der größte Segen, den ein Sterblicher empfangen kann?",
+            "choices": [
+                {
+                    "text": "Das ist Wahnsinn! Lass sie gehen!",
                     "next": "harras_fight"
                 }
             ]
         },
         "harras_fight": {
-            "text": "Niemals! Sie ist die Auserwählte! ... Moment, was habt Ihr da?",
+            "text": "Niemals! Sie ist die Auserwählte! ... Moment, was habt Ihr da in Eurer Hand?",
             "choices": [
                 {
                     "text": "[Dolch benutzen] Dein Ritual endet hier!",
@@ -112,33 +194,66 @@
                     "next": "harras_defeat"
                 },
                 {
-                    "text": "Ich werde dich aufhalten!",
+                    "text": "Nichts! Ich werde dich aufhalten!",
                     "next": "harras_bad_end"
                 }
             ]
         },
         "harras_defeat": {
-            "text": "Nein! Das... das kann nicht sein! Meine Macht... schwindet...",
+            "text": "Nein! Das... das kann nicht sein! Der geweihte Dolch! Meine Macht... schwindet... NEIIIN!",
             "actions": {
                 "completeQuest": "bluttribut_main",
-                "giveItem": "drama_essence"
+                "giveItem": "drama_essence",
+                "removeItem": "ritual_dagger"
             },
             "choices": [
                 {
-                    "text": "Es ist vorbei."
+                    "text": "Es ist vorbei, Harras."
                 }
             ]
         },
         "harras_bad_end": {
-            "text": "Törichtes Wesen. Ihr könnt mich nicht besiegen!"
+            "text": "Törichtes Wesen. Ohne den Dolch könnt Ihr mich nicht besiegen! Wachen! Ergreift diesen Eindringling!",
+            "choices": [
+                {
+                    "text": "(Flucht nach draußen)"
+                }
+            ]
         }
     },
     "emma": {
+        "conditional": [
+            {
+                "conditions": {
+                    "hasFlag": "quest:bluttribut_main:completed"
+                },
+                "text": "Du hast es geschafft! Ich bin frei! Danke, danke, danke! Lass uns hier verschwinden!",
+                "choices": [
+                    {
+                        "text": "Komm, wir gehen nach Hause."
+                    }
+                ]
+            }
+        ],
         "default": {
-            "text": "Hilfe! Er ist wahnsinnig! Bitte, hol mich hier raus!",
+            "text": "Hilfe! Bitte, hol mich hier raus! Der Graf... er will mich in ein Monster verwandeln! Das Ritual findet heute Nacht statt!",
             "choices": [
                 {
-                    "text": "Keine Sorge, ich bringe dich hier raus."
+                    "text": "Ich werde dich retten, Emma. Halt durch!",
+                    "next": "emma_hope"
+                }
+            ]
+        },
+        "emma_hope": {
+            "text": "Bitte beeile dich! Es muss einen Weg geben, das Ritual zu stoppen. Vielleicht weiß der Geist in der Bibliothek etwas!"
+        }
+    },
+    "book_read": {
+        "default": {
+            "text": "Dies ist das 'Blutsaugen für Anfänger'. Es beschreibt das Ritual... und dass nur ein geweihter Dolch aus der Familiengruft die Verbindung zum Meistervampir trennen kann. Die Gruft befindet sich im Garten des Anwesens.",
+            "choices": [
+                {
+                    "text": "(Schließen)"
                 }
             ]
         }
