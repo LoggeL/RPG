@@ -1,4 +1,29 @@
 {
+    "hans": {
+        "default": {
+            "text": "Hey! Wir müssen Emma retten! Aber pass auf, Johann bewacht das Tor.",
+            "actions": {
+                "startQuest": "bluttribut_main"
+            },
+            "choices": [
+                {
+                    "text": "Hast du etwas, das helfen könnte?",
+                    "next": "hans_help"
+                }
+            ]
+        },
+        "hans_help": {
+            "text": "Ich habe diesen Knoblauch. Vielleicht hilft das gegen den Torwächter?",
+            "actions": {
+                "giveItem": "garlic"
+            },
+            "choices": [
+                {
+                    "text": "Danke, Hans. Ich werde es versuchen."
+                }
+            ]
+        }
+    },
     "johann": {
         "default": {
             "text": "Was? Wer da? Ich habe keine Zeit für Besucher! Der Graf bereitet das Fest vor.",
@@ -55,8 +80,7 @@
             "text": "Ah, das arme Mädchen. Ihr Schicksal soll das meine sein... Aber es gibt Hoffnung. In diesem Buch steht, wie man das Ritual bricht.",
             "actions": {
                 "giveItem": "vampire_book",
-                "startQuest": "bluttribut_main",
-                "setFlag": "knows_weakness"
+                "setFlag": "quest:bluttribut_main:stage:2"
             },
             "choices": [
                 {

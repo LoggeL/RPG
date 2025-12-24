@@ -1,0 +1,87 @@
+{
+    "name": "Manor Interior",
+    "width": 20,
+    "height": 20,
+    "playerSpawn": {
+        "x": 10,
+        "y": 18
+    },
+    "layers": [
+        [
+            ["stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone"],
+            ["stone", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "stone"],
+            ["stone", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "stone"],
+            ["stone", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "stone"],
+            ["stone", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "stone"],
+            ["stone", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "stone"],
+            ["stone", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "stone"],
+            ["stone", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "stone"],
+            ["stone", "stone", "stone", "stone", "stone", "stone", "stone", "wood", "wood", "wood", "wood", "wood", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone"],
+            ["stone", "wood", "wood", "wood", "wood", "wood", "stone", "wood", "wood", "wood", "wood", "wood", "stone", "wood", "wood", "wood", "wood", "wood", "wood", "stone"],
+            ["stone", "wood", "wood", "wood", "wood", "wood", "stone", "wood", "wood", "wood", "wood", "wood", "stone", "wood", "wood", "wood", "wood", "wood", "wood", "stone"],
+            ["stone", "wood", "wood", "wood", "wood", "wood", "stone", "wood", "wood", "wood", "wood", "wood", "stone", "wood", "wood", "wood", "wood", "wood", "wood", "stone"],
+            ["stone", "wood", "wood", "wood", "wood", "wood", "stone", "wood", "wood", "wood", "wood", "wood", "stone", "wood", "wood", "wood", "wood", "wood", "wood", "stone"],
+            ["stone", "wood", "wood", "wood", "wood", "wood", "stone", "wood", "wood", "wood", "wood", "wood", "stone", "wood", "wood", "wood", "wood", "wood", "wood", "stone"],
+            ["stone", "wood", "wood", "wood", "wood", "wood", "stone", "wood", "wood", "wood", "wood", "wood", "stone", "wood", "wood", "wood", "wood", "wood", "wood", "stone"],
+            ["stone", "wood", "wood", "wood", "wood", "wood", "stone", "wood", "wood", "wood", "wood", "wood", "stone", "wood", "wood", "wood", "wood", "wood", "wood", "stone"],
+            ["stone", "wood", "wood", "wood", "wood", "wood", "stone", "wood", "wood", "wood", "wood", "wood", "stone", "wood", "wood", "wood", "wood", "wood", "wood", "stone"],
+            ["stone", "stone", "stone", "stone", "stone", "stone", "stone", "wood", "wood", "wood", "wood", "wood", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone"],
+            ["stone", "stone", "stone", "stone", "stone", "stone", "stone", "wood", "wood", "wood", "wood", "wood", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone"],
+            ["stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone"]
+        ]
+    ],
+    "collision": [
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    ],
+    "npcs": [
+        {
+            "id": "anastasia",
+            "name": "Anastasia",
+            "x": 3,
+            "y": 14,
+            "dialogId": "anastasia"
+        },
+        {
+            "id": "harras",
+            "name": "Graf Harras",
+            "x": 10,
+            "y": 3,
+            "dialogId": "harras"
+        },
+        {
+            "id": "emma",
+            "name": "Emma",
+            "x": 11,
+            "y": 3,
+            "dialogId": "emma"
+        }
+    ],
+    "objects": [
+        {
+            "id": "door_out",
+            "type": "door",
+            "x": 10,
+            "y": 19,
+            "toMap": "manor-exterior"
+        }
+    ]
+}

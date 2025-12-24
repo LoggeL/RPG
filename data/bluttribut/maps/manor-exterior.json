@@ -44,6 +44,13 @@
     ],
     "npcs": [
         {
+            "id": "hans",
+            "name": "Hans",
+            "x": 10,
+            "y": 13,
+            "dialogId": "hans"
+        },
+        {
             "id": "johann",
             "name": "Johann",
             "x": 10,
@@ -73,7 +80,8 @@
             "x": 2,
             "y": 5,
             "item": "ritual_dagger",
-            "amount": 1
+            "amount": 1,
+            "setFlag": "quest:bluttribut_main:stage:3"
         }
     ]
 }
