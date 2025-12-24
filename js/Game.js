@@ -49,7 +49,7 @@ export class Game {
 
     async init() {
         this.cacheElements();
-        
+
         // Load assets before game data
         await resourceManager.loadAll();
 
@@ -84,8 +84,19 @@ export class Game {
         this.inventoryItems = document.getElementById('inventory-items');
         this.questList = document.getElementById('quest-list');
 
+        this.debugOverlay = document.getElementById('debug-overlay');
+        this.debugWorldData = document.getElementById('debug-world-data');
+        this.debugWorldSelect = document.getElementById('debug-world-select');
+        this.debugMapSelect = document.getElementById('debug-map-select');
+        this.debugFlagsList = document.getElementById('debug-flags-list');
+        this.debugNewFlagInput = document.getElementById('debug-new-flag');
+
         this.hudHint = document.getElementById('hud-hint');
         this.hudLocation = document.getElementById('hud-location');
+
+        // Walkthrough debug elements
+        this.debugWalkthroughContent = document.getElementById('debug-walkthrough-content');
+        this.debugQuickActions = document.getElementById('debug-quick-actions');
     }
 
     setupEventListeners() {
@@ -94,6 +105,32 @@ export class Game {
         document.getElementById('btn-continue').addEventListener('click', () => this.continueGame());
         document.getElementById('btn-start').addEventListener('click', () => this.beginJourney());
         document.getElementById('close-inventory').addEventListener('click', () => this.closeInventory());
+        document.getElementById('close-debug').addEventListener('click', () => this.closeDebug());
+
+        // Debug Controls
+        document.querySelectorAll('.debug-tab').forEach(tab => {
+            tab.addEventListener('click', (e) => this.switchDebugTab(e.target.dataset.tab));
+        });
+
+        document.getElementById('debug-teleport-btn').addEventListener('click', () => {
+            const worldId = this.debugWorldSelect.value;
+            const mapId = this.debugMapSelect.value;
+            if (worldId && mapId) {
+                this.loadMap(worldId, mapId);
+                this.closeDebug();
+            }
+        });
+
+        this.debugWorldSelect.addEventListener('change', () => this.updateDebugMapSelect());
+
+        document.getElementById('debug-add-flag-btn').addEventListener('click', () => {
+            const flagName = this.debugNewFlagInput.value.trim();
+            if (flagName) {
+                this.flagManager.setFlag(flagName, true);
+                this.debugNewFlagInput.value = '';
+                this.updateDebugFlags();
+            }
+        });
 
         // Character variant selection
         document.querySelectorAll('.variant-btn').forEach(btn => {
@@ -115,13 +152,13 @@ export class Game {
             'hub', 'bluttribut', 'dystopia',
             'kristall-der-traeume', 'malleus-maleficarum', 'goldfieber',
             'traum-von-freiheit', 'sagenhaft', 'nexus',
-            'hoellische-herausforderung', 'anno-1146'
+            'hoellische-herausforderung', 'anno-1146', 'verrat-im-kloster'
         ];
 
         // Map entry points for each world
         const entryMaps = {
             'hub': 'theater-main',
-            'bluttribut': 'ritual-grounds',
+            'bluttribut': 'manor-exterior',
             'dystopia': 'slums',
             'kristall-der-traeume': 'dream-forest',
             'malleus-maleficarum': 'village-square',
@@ -130,7 +167,8 @@ export class Game {
             'sagenhaft': 'legend-stage',
             'nexus': 'nexus-core',
             'hoellische-herausforderung': 'infernal-gates',
-            'anno-1146': 'crusader-camp'
+            'anno-1146': 'crusader-camp',
+            'verrat-im-kloster': 'monastery-gates'
         };
 
         try {
@@ -145,22 +183,46 @@ export class Game {
                 quests: {}
             };
 
-            // Load each world's data
-            for (const worldId of worldIds) {
+            // First pass: Load all world definitions
+            const worldPromises = worldIds.map(async (worldId) => {
+                const world = await this.loadJSON(`data/${worldId}/world.json`);
+                const dialogs = await this.loadJSON(`data/${worldId}/dialogs.json`);
+                const quests = await this.loadJSON(`data/${worldId}/quests.json`);
+
+                return { worldId, world, dialogs, quests };
+            });
+
+            const loadedWorlds = await Promise.all(worldPromises);
+
+            // Second pass: Load entry maps for each world
+            // Note: Other maps are loaded dynamically as needed
+            const mapPromises = [];
+
+            for (const data of loadedWorlds) {
+                const { worldId, world, dialogs, quests } = data;
+
+                // Store world data
                 const entryMap = entryMaps[worldId];
 
-                const [world, map, dialogs, quests] = await Promise.all([
-                    this.loadJSON(`data/${worldId}/world.json`),
-                    this.loadJSON(`data/${worldId}/maps/${entryMap}.json`),
-                    this.loadJSON(`data/${worldId}/dialogs.json`),
-                    this.loadJSON(`data/${worldId}/quests.json`)
-                ]);
-
                 this.gameData.worlds[worldId] = world || { name: worldId, entryMap };
-                this.gameData.maps[`${worldId}-${entryMap}`] = map || {};
                 this.gameData.dialogs[worldId] = dialogs || {};
                 this.gameData.quests[worldId] = quests || {};
+
+                // Ensure entry map is loaded
+                if (entryMap) {
+                    mapPromises.push(async () => {
+                        const map = await this.loadJSON(`data/${worldId}/maps/${entryMap}.json`);
+                        if (map) {
+                            this.gameData.maps[`${worldId}-${entryMap}`] = map;
+                        } else {
+                            console.warn(`Failed to load entry map: ${worldId}-${entryMap}`);
+                        }
+                    });
+                }
             }
+
+            // Execute all initial map loads
+            await Promise.all(mapPromises.map(p => p()));
 
             console.log('All game data loaded:', Object.keys(this.gameData.worlds));
         } catch (error) {
@@ -263,28 +325,40 @@ export class Game {
         this.showScreen('character');
     }
 
-    continueGame() {
-        this.loadGame();
+    async continueGame() {
+        await this.loadGame();
         this.startGameLoop();
     }
 
-    beginJourney() {
+    async beginJourney() {
         const nameInput = document.getElementById('player-name');
         this.playerData.name = nameInput.value.trim() || 'Spieler';
 
         this.showScreen('game');
-        this.loadMap(this.currentWorld, this.currentMap);
+        await this.loadMap(this.currentWorld, this.currentMap);
         this.startGameLoop();
         this.saveGame();
     }
 
-    loadMap(worldId, mapId) {
+    async loadMap(worldId, mapId) {
         // If mapId is null, use the world's entry map
         if (!mapId && this.gameData.worlds[worldId]) {
             mapId = this.gameData.worlds[worldId].entryMap || 'main';
         }
 
         const mapKey = `${worldId}-${mapId}`;
+
+        // Dynamically load map if not present
+        if (!this.gameData.maps[mapKey]) {
+            console.log(`Map ${mapKey} not in memory, attempting to load...`);
+            const mapData = await this.loadJSON(`data/${worldId}/maps/${mapId}.json`);
+            if (mapData) {
+                this.gameData.maps[mapKey] = mapData;
+            } else {
+                console.warn(`Failed to load map ${mapKey}, using default`);
+            }
+        }
+
         const mapData = this.gameData.maps[mapKey] || this.getDefaultMap();
 
         console.log(`Loading map: ${mapKey}`, mapData);
@@ -302,9 +376,13 @@ export class Game {
         const spawn = mapData.playerSpawn || { x: 2, y: 2 };
         this.player = new Player(this, spawn.x * TILE_SIZE, spawn.y * TILE_SIZE, this.playerElement);
 
-        // Create NPCs
+        // Create NPCs (filter out removed NPCs)
         if (mapData.npcs) {
             mapData.npcs.forEach(npcData => {
+                // Skip NPCs that have been permanently removed
+                if (this.flagManager.hasFlag(`npc:${npcData.id}:removed`)) {
+                    return;
+                }
                 const npc = new NPC(this, npcData);
                 this.npcs.push(npc);
                 this.entitiesContainer.appendChild(npc.element);
@@ -367,6 +445,7 @@ export class Game {
         if (this.currentScreen !== 'game') return;
         if (!this.dialogOverlay.classList.contains('hidden')) return;
         if (!this.inventoryOverlay.classList.contains('hidden')) return;
+        if (!this.debugOverlay.classList.contains('hidden')) return;
 
         // Handle player movement
         if (this.player) {
@@ -447,6 +526,8 @@ export class Game {
     handleKeyDown(e) {
         this.keys[e.code] = true;
 
+        if (e.repeat) return;
+
         // Handle special keys
         if (this.isKeyPressed(KEYS.INTERACT)) {
             this.handleInteract();
@@ -454,6 +535,10 @@ export class Game {
 
         if (this.isKeyPressed(KEYS.INVENTORY)) {
             this.toggleInventory();
+        }
+
+        if (this.isKeyPressed(KEYS.DEBUG)) {
+            this.toggleDebug();
         }
 
         if (this.isKeyPressed(KEYS.ESCAPE)) {
@@ -600,11 +685,367 @@ export class Game {
         });
     }
 
+    toggleDebug() {
+        if (this.debugOverlay.classList.contains('hidden')) {
+            this.openDebug();
+        } else {
+            this.closeDebug();
+        }
+    }
+
+    openDebug() {
+        this.updateDebugUI();
+        this.debugOverlay.classList.remove('hidden');
+    }
+
+    closeDebug() {
+        this.debugOverlay.classList.add('hidden');
+    }
+
+    switchDebugTab(tabId) {
+        document.querySelectorAll('.debug-tab').forEach(t => t.classList.remove('active'));
+        document.querySelector(`.debug-tab[data-tab="${tabId}"]`).classList.add('active');
+
+        document.querySelectorAll('.debug-panel').forEach(p => p.classList.remove('active'));
+        document.getElementById(`debug-tab-${tabId}`).classList.add('active');
+    }
+
+    updateDebugUI() {
+        this.updateDebugInfo();
+        this.updateDebugTeleport();
+        this.updateDebugFlags();
+        this.updateWalkthrough();
+    }
+
+    updateWalkthrough() {
+        if (!this.debugWalkthroughContent) return;
+
+        const walkthroughs = this.getWalkthroughData();
+        const currentWalkthrough = walkthroughs[this.currentWorld];
+
+        if (!currentWalkthrough) {
+            this.debugWalkthroughContent.innerHTML = `
+                <p style="color: var(--text-muted);">Kein Walkthrough für "${this.currentWorld}" verfügbar.</p>
+            `;
+            this.debugQuickActions.innerHTML = '';
+            return;
+        }
+
+        // Determine current step based on flags and quests
+        let currentStep = 0;
+        for (let i = 0; i < currentWalkthrough.steps.length; i++) {
+            const step = currentWalkthrough.steps[i];
+            if (step.checkFlag && this.flagManager.hasFlag(step.checkFlag)) {
+                currentStep = i + 1;
+            }
+            if (step.checkItem && this.inventoryManager.hasItem(step.checkItem)) {
+                currentStep = Math.max(currentStep, i + 1);
+            }
+        }
+
+        // Build walkthrough HTML
+        let html = `<h4 style="margin-top:0; color: var(--accent);">${currentWalkthrough.title}</h4>`;
+        html += `<ol class="walkthrough-steps">`;
+
+        currentWalkthrough.steps.forEach((step, idx) => {
+            const isCompleted = idx < currentStep;
+            const isCurrent = idx === currentStep;
+            const stepClass = isCompleted ? 'completed' : (isCurrent ? 'current' : '');
+
+            html += `<li class="walkthrough-step ${stepClass}">`;
+            html += `<span class="step-indicator">${isCompleted ? '✓' : (idx + 1)}</span>`;
+            html += `<span class="step-text">${step.text}</span>`;
+            if (isCurrent && step.hint) {
+                html += `<div class="step-hint">💡 ${step.hint}</div>`;
+            }
+            html += `</li>`;
+        });
+
+        html += `</ol>`;
+        this.debugWalkthroughContent.innerHTML = html;
+
+        // Build quick actions
+        this.debugQuickActions.innerHTML = '';
+
+        if (currentWalkthrough.quickActions) {
+            const header = document.createElement('div');
+            header.className = 'quick-actions-header';
+            header.textContent = 'Schnellaktionen:';
+            this.debugQuickActions.appendChild(header);
+
+            currentWalkthrough.quickActions.forEach(action => {
+                const btn = document.createElement('button');
+                btn.className = 'menu-btn small-btn';
+                btn.textContent = action.label;
+                btn.addEventListener('click', () => {
+                    if (action.giveItem) {
+                        this.inventoryManager.addItem(action.giveItem, 1);
+                        this.showNotification(`+1 ${action.giveItem}`);
+                    }
+                    if (action.setFlag) {
+                        this.flagManager.setFlag(action.setFlag, true);
+                    }
+                    if (action.teleport) {
+                        this.loadMap(this.currentWorld, action.teleport);
+                        this.closeDebug();
+                    }
+                    this.updateWalkthrough();
+                    this.updateDebugFlags();
+                });
+                this.debugQuickActions.appendChild(btn);
+            });
+        }
+    }
+
+    getWalkthroughData() {
+        return {
+            'bluttribut': {
+                title: 'Bluttribut - Rettung von Emma',
+                steps: [
+                    {
+                        text: 'Sprich mit Hans am Eingang',
+                        hint: 'Hans steht südlich. Er gibt dir Knoblauch.',
+                        checkItem: 'garlic'
+                    },
+                    {
+                        text: 'Konfrontiere Johann am Tor',
+                        hint: 'Zeige ihm den Knoblauch oder schüchtere ihn ein.',
+                        checkItem: 'manor_key'
+                    },
+                    {
+                        text: 'Betrete das Herrenhaus',
+                        hint: 'Benutze den Schlüssel an der Tür im Norden.',
+                        checkFlag: 'johann_distracted'
+                    },
+                    {
+                        text: 'Finde Anastasia in der Bibliothek',
+                        hint: 'Sie ist im linken Bereich des Herrenhauses.',
+                        checkItem: 'vampire_book',
+                        checkFlag: 'quest:bluttribut_main:stage:2'
+                    },
+                    {
+                        text: 'Hole den Ritualdolch aus der Gruft',
+                        hint: 'Die Truhe ist draußen im Außenbereich (links).',
+                        checkItem: 'ritual_dagger',
+                        checkFlag: 'quest:bluttribut_main:stage:3'
+                    },
+                    {
+                        text: 'Stelle Graf Harras und rette Emma',
+                        hint: 'Benutze den Dolch im Dialog mit dem Grafen.',
+                        checkFlag: 'quest:bluttribut_main:completed'
+                    }
+                ],
+                quickActions: [
+                    { label: '+Knoblauch', giveItem: 'garlic' },
+                    { label: '+Schlüssel', giveItem: 'manor_key' },
+                    { label: '+Buch', giveItem: 'vampire_book' },
+                    { label: '+Dolch', giveItem: 'ritual_dagger' },
+                    { label: '→ Interior', teleport: 'manor-interior' },
+                    { label: '→ Exterior', teleport: 'manor-exterior' }
+                ]
+            },
+            'hub': {
+                title: 'Theater-Hub',
+                steps: [
+                    { text: 'Sprich mit Sebastian für Einführung' },
+                    { text: 'Besuche Margot für Requisiten' },
+                    { text: 'Erkunde die Portale zu anderen Welten' }
+                ],
+                quickActions: []
+            }
+        };
+    }
+
+    updateDebugInfo() {
+        const worldData = {
+            currentWorld: this.currentWorld,
+            currentMap: this.currentMap,
+            playerPosition: {
+                x: Math.round(this.player?.x || 0),
+                y: Math.round(this.player?.y || 0)
+            },
+            loadedWorlds: Object.keys(this.gameData.worlds).length,
+            activeQuests: this.questManager.getActiveQuests().map(q => q.id),
+            inventoryCount: this.inventoryManager.getItems().length,
+            entities: {
+                npcs: this.npcs.length,
+                objects: this.objects.length
+            }
+        };
+
+        this.debugWorldData.textContent = JSON.stringify(worldData, null, 2);
+    }
+
+    updateDebugTeleport() {
+        // Populate Worlds if empty
+        if (this.debugWorldSelect.options.length === 0) {
+            Object.keys(this.gameData.worlds).sort().forEach(worldId => {
+                const option = document.createElement('option');
+                option.value = worldId;
+                option.textContent = this.gameData.worlds[worldId].name || worldId;
+                this.debugWorldSelect.appendChild(option);
+            });
+        }
+
+        // Set current world selection
+        if (this.currentWorld) {
+            this.debugWorldSelect.value = this.currentWorld;
+        }
+
+        this.updateDebugMapSelect();
+    }
+
+    updateDebugMapSelect() {
+        const worldId = this.debugWorldSelect.value;
+        this.debugMapSelect.innerHTML = '';
+
+        const worldDef = this.gameData.worlds[worldId];
+
+        // If the world has a 'maps' array in its definition, use that
+        // This ensures we show ALL maps, even if they aren't loaded yet
+        if (worldDef && worldDef.maps && Array.isArray(worldDef.maps) && worldDef.maps.length > 0) {
+            worldDef.maps.forEach(mapId => {
+                const mapKey = `${worldId}-${mapId}`;
+                // Try to get loaded map name, otherwise capitalize mapId
+                const loadedMap = this.gameData.maps[mapKey];
+                const mapName = loadedMap ? (loadedMap.name || mapId) : mapId;
+
+                const option = document.createElement('option');
+                option.value = mapId;
+                option.textContent = mapName + (loadedMap ? '' : ' (Not Loaded)');
+                this.debugMapSelect.appendChild(option);
+            });
+        } else {
+            // Fallback to searching loaded maps
+            Object.keys(this.gameData.maps).forEach(mapKey => {
+                if (mapKey.startsWith(`${worldId}-`)) {
+                    const mapId = mapKey.replace(`${worldId}-`, '');
+                    const mapName = this.gameData.maps[mapKey].name || mapId;
+
+                    const option = document.createElement('option');
+                    option.value = mapId;
+                    option.textContent = mapName;
+                    this.debugMapSelect.appendChild(option);
+                }
+            });
+        }
+
+        // Try to select current map if in current world
+        if (this.currentWorld === worldId && this.currentMap) {
+            this.debugMapSelect.value = this.currentMap;
+        }
+    }
+
+    getFlagMetadata(flagKey) {
+        // Search in world definitions
+        for (const worldId in this.gameData.worlds) {
+            const world = this.gameData.worlds[worldId];
+            if (world.flags && world.flags[flagKey]) {
+                return {
+                    name: world.flags[flagKey].name,
+                    world: world.name || worldId
+                };
+            }
+        }
+
+        // Check dynamic flags
+        if (flagKey.startsWith('quest:')) {
+            const parts = flagKey.split(':');
+            const questId = parts[1];
+            const type = parts[2];
+            const name = type === 'active' ? 'Aktiv' : (type === 'completed' ? 'Abgeschlossen' : type);
+            return {
+                name: `Quest ${questId}: ${name}`,
+                world: 'System'
+            };
+        }
+
+        if (flagKey.startsWith('object:')) {
+            const parts = flagKey.split(':');
+            const objId = parts[1];
+            const type = parts[2];
+            const name = type === 'opened' ? 'Geöffnet' : (type === 'unlocked' ? 'Entriegelt' : type);
+            return {
+                name: `Objekt ${objId}: ${name}`,
+                world: 'System'
+            };
+        }
+
+        if (flagKey.startsWith('world:')) {
+            const parts = flagKey.split(':');
+            const worldId = parts[1];
+            return {
+                name: `Welt ${worldId} abgeschlossen`,
+                world: 'System'
+            };
+        }
+
+        if (flagKey.startsWith('portal:')) {
+            const parts = flagKey.split(':');
+            const portalId = parts[1];
+            return {
+                name: `Portal ${portalId} freigeschaltet`,
+                world: 'Hub'
+            };
+        }
+
+        return {
+            name: flagKey,
+            world: 'Andere'
+        };
+    }
+
+    updateDebugFlags() {
+        this.debugFlagsList.innerHTML = '';
+        const flags = this.flagManager.getAllFlags();
+        const flagKeys = Object.keys(flags).sort();
+
+        if (flagKeys.length === 0) {
+            this.debugFlagsList.innerHTML = '<p style="color: var(--text-muted);">Keine Flags gesetzt</p>';
+            return;
+        }
+
+        // Group by world
+        const groupedFlags = {};
+        flagKeys.forEach(key => {
+            const meta = this.getFlagMetadata(key);
+            if (!groupedFlags[meta.world]) groupedFlags[meta.world] = [];
+            groupedFlags[meta.world].push({ key, val: flags[key], name: meta.name });
+        });
+
+        Object.keys(groupedFlags).sort().forEach(world => {
+            const worldHeader = document.createElement('div');
+            worldHeader.className = 'debug-flag-group-header';
+            worldHeader.textContent = world;
+            this.debugFlagsList.appendChild(worldHeader);
+
+            groupedFlags[world].forEach(flag => {
+                const div = document.createElement('div');
+                div.className = `debug-flag-item ${flag.val ? 'true' : 'false'}`;
+                div.innerHTML = `
+                    <span class="debug-flag-name">${flag.name}</span>
+                    <span class="debug-flag-status"></span>
+                `;
+
+                div.title = flag.key; // Show internal key on hover
+
+                div.addEventListener('click', () => {
+                    this.flagManager.setFlag(flag.key, !flag.val);
+                    this.updateDebugFlags();
+                });
+
+                this.debugFlagsList.appendChild(div);
+            });
+        });
+    }
+
     handleEscape() {
         if (!this.dialogOverlay.classList.contains('hidden')) {
             this.closeDialog();
         } else if (!this.inventoryOverlay.classList.contains('hidden')) {
             this.closeInventory();
+        } else if (!this.debugOverlay.classList.contains('hidden')) {
+            this.closeDebug();
         }
     }
 
@@ -629,7 +1070,7 @@ export class Game {
         console.log('Game saved');
     }
 
-    loadGame() {
+    async loadGame() {
         const json = localStorage.getItem(SAVE_KEY);
         if (!json) return;
 
@@ -646,7 +1087,7 @@ export class Game {
             this.questManager.deserialize(saveData.quests || { active: [], completed: [] });
 
             this.showScreen('game');
-            this.loadMap(this.currentWorld, this.currentMap);
+            await this.loadMap(this.currentWorld, this.currentMap);
 
             // Restore player position
             if (saveData.player?.x !== undefined && this.player) {

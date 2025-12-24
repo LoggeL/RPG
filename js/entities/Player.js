@@ -67,9 +67,17 @@ export class Player {
             { x: x + this.width - padding, y: y + this.height - padding }
         ];
 
+        const mapHeight = collision.length;
+        const mapWidth = collision[0]?.length || 0;
+
         for (const point of points) {
             const tileX = Math.floor(point.x / TILE_SIZE);
             const tileY = Math.floor(point.y / TILE_SIZE);
+
+            // Treat out-of-bounds as solid walls
+            if (tileX < 0 || tileY < 0 || tileX >= mapWidth || tileY >= mapHeight) {
+                return true;
+            }
 
             if (collision[tileY] && collision[tileY][tileX] === 1) {
                 return true;

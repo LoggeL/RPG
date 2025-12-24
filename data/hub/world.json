@@ -6,5 +6,11 @@
     "maps": [
         "theater-main",
         "portal-chamber"
-    ]
+    ],
+    "flags": {
+        "intro_complete": { "name": "Einführung abgeschlossen" },
+        "margot_gave_items": { "name": "Margot gab Gegenstände" },
+        "portal:portal_blut:unlocked": { "name": "Portal zu 'Bluttribut' freigeschaltet" },
+        "entered_stolen_crown": { "name": "Welt 'Die gestohlene Krone' betreten" }
+    }
 }

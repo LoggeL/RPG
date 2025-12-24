@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Theater Nexus RPG</title>
-    <meta name="description" content="Ein Top-Down 2D-Rollenspiel, in dem du durch magische Portale in Theaterstücke reist">
+    <meta name="description"
+        content="Ein Top-Down 2D-Rollenspiel, in dem du durch magische Portale in Theaterstücke reist">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -20,7 +21,8 @@
                     <button id="btn-new-game" class="menu-btn">Neues Spiel</button>
                     <button id="btn-continue" class="menu-btn" disabled>Fortsetzen</button>
                 </div>
-                <p class="menu-controls">Steuerung: WASD zum Bewegen, E zum Interagieren, I für Inventar, ESC für Menü</p>
+                <p class="menu-controls">Steuerung: WASD zum Bewegen, E zum Interagieren, I für Inventar, ESC für Menü
+                </p>
             </div>
         </div>
 
@@ -100,6 +102,55 @@
                     <button id="btn-resume" class="menu-btn">Fortsetzen</button>
                     <button id="btn-save" class="menu-btn">Spiel speichern</button>
                     <button id="btn-quit" class="menu-btn secondary">Zurück zum Hauptmenü</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Debug Overlay -->
+        <div id="debug-overlay" class="overlay hidden">
+            <div id="debug-window">
+                <div class="debug-header">
+                    <h3>Regisseur-Modus</h3>
+                    <button id="close-debug" class="close-btn">×</button>
+                </div>
+                <div class="debug-content">
+                    <div class="debug-tabs">
+                        <button class="debug-tab active" data-tab="info">Info</button>
+                        <button class="debug-tab" data-tab="teleport">Teleport</button>
+                        <button class="debug-tab" data-tab="flags">Flags</button>
+                        <button class="debug-tab" data-tab="walkthrough">Walkthrough</button>
+                    </div>
+
+                    <div id="debug-tab-info" class="debug-panel active">
+                        <div id="debug-world-data"></div>
+                    </div>
+
+                    <div id="debug-tab-teleport" class="debug-panel">
+                        <div class="debug-control-group">
+                            <label>Welt:</label>
+                            <select id="debug-world-select"></select>
+                        </div>
+                        <div class="debug-control-group">
+                            <label>Karte:</label>
+                            <select id="debug-map-select"></select>
+                        </div>
+                        <button id="debug-teleport-btn" class="menu-btn small-btn">Reisen</button>
+                    </div>
+
+                    <div id="debug-tab-flags" class="debug-panel">
+                        <div class="debug-add-flag">
+                            <input type="text" id="debug-new-flag" placeholder="Flaggen-Name...">
+                            <button id="debug-add-flag-btn" class="menu-btn small-btn">+</button>
+                        </div>
+                        <div id="debug-flags-list"></div>
+                    </div>
+
+                    <div id="debug-tab-walkthrough" class="debug-panel">
+                        <div id="debug-walkthrough-content">
+                            <p style="color: var(--text-muted);">Welt auswählen für Walkthrough...</p>
+                        </div>
+                        <div id="debug-quick-actions" class="debug-quick-actions"></div>
+                    </div>
                 </div>
             </div>
         </div>

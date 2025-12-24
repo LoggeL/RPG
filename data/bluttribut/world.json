@@ -5,7 +5,19 @@
     "entryMap": "manor-exterior",
     "maps": [
         "manor-exterior",
-        "manor-interior"
+        "manor-interior",
+        "ritual-grounds"
     ],
-    "theme": "dark-fantasy"
+    "theme": "dark-fantasy",
+    "flags": {
+        "johann_distracted": {
+            "name": "Johann abgelenkt"
+        },
+        "quest:bluttribut_main:stage:2": {
+            "name": "Bluttribut: Stufe 2 erreicht"
+        },
+        "quest:bluttribut_main:stage:3": {
+            "name": "Bluttribut: Stufe 3 erreicht"
+        }
+    }
 }

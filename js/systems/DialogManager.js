@@ -11,7 +11,18 @@ export class DialogManager {
     }
 
     getDialog(dialogId) {
-        const dialog = this.dialogs[dialogId];
+        let dialog = this.dialogs[dialogId];
+
+        // If not found at top level, search inside NPC dialog objects
+        if (!dialog) {
+            for (const npcId of Object.keys(this.dialogs)) {
+                const npcDialogs = this.dialogs[npcId];
+                if (npcDialogs && typeof npcDialogs === 'object' && npcDialogs[dialogId]) {
+                    dialog = npcDialogs[dialogId];
+                    break;
+                }
+            }
+        }
 
         if (!dialog) {
             // Return default dialog if not found
@@ -44,12 +55,37 @@ export class DialogManager {
         const filtered = {
             ...dialog,
             choices: dialog.choices.filter(choice => {
-                if (!choice.conditions) return true;
-                return this.checkConditions(choice.conditions);
+                // Support object format: conditions: { hasItem: "garlic" }
+                if (choice.conditions) {
+                    return this.checkConditions(choice.conditions);
+                }
+                // Support string format: condition: "hasItem:garlic"
+                if (choice.condition) {
+                    return this.checkConditionString(choice.condition);
+                }
+                return true;
             })
         };
 
         return filtered;
+    }
+
+    checkConditionString(condStr) {
+        const [type, value] = condStr.split(':');
+        const im = this.game.inventoryManager;
+        const fm = this.game.flagManager;
+
+        switch (type) {
+            case 'hasItem':
+                return im.hasItem(value);
+            case 'hasFlag':
+                return fm.hasFlag(value);
+            case 'notFlag':
+                return !fm.hasFlag(value);
+            default:
+                console.warn('Unknown condition type:', type);
+                return true;
+        }
     }
 
     checkConditions(conditions) {
@@ -96,8 +132,14 @@ export class DialogManager {
         const qm = this.game.questManager;
 
         if (actions.setFlag) {
-            for (const [flag, value] of Object.entries(actions.setFlag)) {
-                fm.setFlag(flag, value);
+            // Support string format: setFlag: "flag_name" (sets to true)
+            if (typeof actions.setFlag === 'string') {
+                fm.setFlag(actions.setFlag, true);
+            } else {
+                // Support object format: setFlag: { "flag_name": true }
+                for (const [flag, value] of Object.entries(actions.setFlag)) {
+                    fm.setFlag(flag, value);
+                }
             }
         }
 
@@ -117,6 +159,19 @@ export class DialogManager {
 
         if (actions.completeQuest) {
             qm.completeQuest(actions.completeQuest);
+        }
+
+        // Remove NPC from the current map
+        if (actions.removeNpc) {
+            const npcId = actions.removeNpc;
+            const npcIndex = this.game.npcs.findIndex(n => n.id === npcId);
+            if (npcIndex !== -1) {
+                const npc = this.game.npcs[npcIndex];
+                npc.destroy();
+                this.game.npcs.splice(npcIndex, 1);
+                // Set a flag so NPC doesn't respawn on reload
+                fm.setFlag(`npc:${npcId}:removed`, true);
+            }
         }
     }
 }

@@ -1121,7 +1121,7 @@
             "type": "portal",
             "x": 6,
             "y": 2,
-            "locked": true,
+            "locked": false,
             "toWorld": "bluttribut"
         },
         {

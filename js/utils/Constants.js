@@ -15,6 +15,7 @@ export const KEYS = {
     RIGHT: ['KeyD', 'ArrowRight'],
     INTERACT: ['KeyE', 'Space'],
     INVENTORY: ['KeyI'],
+    DEBUG: ['KeyP'],
     ESCAPE: ['Escape']
 };
 
