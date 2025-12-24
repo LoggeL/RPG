@@ -1,0 +1,12 @@
+{
+    "bluttribut_main": {
+        "title": "Der Bluttribut",
+        "description": "Graf Harras plant ein dunkles Ritual. Rette Emma, bevor es zu spät ist.",
+        "stages": {
+            "0": "Dringe in das Anwesen ein. Suche nach einem Eingang.",
+            "1": "Suche in der Bibliothek nach Schwächen des Grafen.",
+            "2": "Finde den Ritualdolch, um das Ritual zu unterbrechen.",
+            "3": "Stelle Graf Harras im Festsaal und rette Emma."
+        }
+    }
+}

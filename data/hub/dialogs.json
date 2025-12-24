@@ -1,0 +1,123 @@
+{
+    "sebastian": {
+        "default": {
+            "text": "Ah, mein Assistent! Willkommen in meinem Theater. Ich bin Sebastian, der Direktor dieses prächtigen Hauses. Leider habe ich meinen kreativen Funken verloren... die Essenz des Dramas.",
+            "choices": [
+                {
+                    "text": "Wie kann ich helfen?",
+                    "next": "sebastian_help"
+                },
+                {
+                    "text": "Was ist die Essenz?",
+                    "next": "sebastian_essenz"
+                },
+                {
+                    "text": "Auf Wiedersehen.",
+                    "actions": {}
+                }
+            ]
+        },
+        "conditional": [
+            {
+                "conditions": {
+                    "hasFlag": "intro_complete"
+                },
+                "text": "Hast du schon Hinweise auf die Essenz gefunden? Das Portal zu 'Bluttribut' wartet...",
+                "choices": [
+                    {
+                        "text": "Ich werde weiter suchen.",
+                        "actions": {
+                            "setFlag": {
+                                "portal:portal_blut:unlocked": true
+                            }
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    "sebastian_help": {
+        "text": "Du musst durch die magischen Portale in die Welten der Theaterstücke reisen. Nur wenn wir ihre Geschichten in Ordnung bringen, können wir das Drama wiederherstellen!",
+        "next": "sebastian_quest"
+    },
+    "sebastian_essenz": {
+        "text": "Die Essenz des Dramas ist die Seele des Theaters! Ohne sie wirkt jede Aufführung leblos. Sie wurde über die Stücke verstreut, als das Unheil geschah.",
+        "choices": [
+            {
+                "text": "Ich werde dir helfen, sie zu finden!",
+                "next": "sebastian_quest"
+            }
+        ]
+    },
+    "sebastian_quest": {
+        "text": "Wunderbar! Deine erste Mission: Betritt die Welt von 'Bluttribut' und decke die Wahrheit auf. Aber sprich zuerst mit Margot über die Requisiten, die du benötigen wirst.",
+        "choices": [
+            {
+                "text": "Ich werde mit Margot sprechen.",
+                "actions": {
+                    "setFlag": {
+                        "intro_complete": true,
+                        "portal:portal_blut:unlocked": true
+                    },
+                    "startQuest": "find_essenz"
+                }
+            }
+        ]
+    },
+    "margot": {
+        "default": {
+            "text": "Hallo! Ich bin Margot, die Requisitenmeisterin. Brauchst du etwas für deine Reise?",
+            "choices": [
+                {
+                    "text": "Sebastian schickt mich.",
+                    "conditions": {
+                        "hasFlag": "intro_complete"
+                    },
+                    "next": "margot_items"
+                },
+                {
+                    "text": "Ich schaue mich nur um.",
+                    "actions": {}
+                }
+            ]
+        }
+    },
+    "margot_items": {
+        "text": "Ah, du bist der neue Assistent! Hier, nimm diesen Trank. Du wirst ihn auf deinen Abenteuern sicher brauchen können.",
+        "choices": [
+            {
+                "text": "Vielen Dank!",
+                "actions": {
+                    "giveItem": "potion",
+                    "setFlag": {
+                        "margot_gave_items": true
+                    }
+                }
+            }
+        ]
+    },
+    "theo": {
+        "default": {
+            "text": "Hey! Ich bin Theo, der Bühnenarbeiter. Ich sorge dafür, dass alles reibungslos läuft... jedenfalls wenn nicht gerade alles auseinanderfällt.",
+            "choices": [
+                {
+                    "text": "Was ist hier passiert?",
+                    "next": "theo_story"
+                },
+                {
+                    "text": "Man sieht sich.",
+                    "actions": {}
+                }
+            ]
+        }
+    },
+    "theo_story": {
+        "text": "Eines Tages spielten alle Portale einfach... verrückt. Charaktere vermischten sich, Geschichten gerieten durcheinander. Sebastian versucht seitdem, alles wieder in Ordnung zu bringen.",
+        "choices": [
+            {
+                "text": "Ich werde helfen, die Dinge wieder geradezurücken.",
+                "actions": {}
+            }
+        ]
+    }
+}

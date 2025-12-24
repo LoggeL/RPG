@@ -1,0 +1,11 @@
+{
+    "id": "sagenhaft",
+    "name": "Sagenhaft (Kreativbühne)",
+    "description": "Eine Welt der Sagen und Mythen. Erlebe die Geschichten, die Generationen geprägt haben.",
+    "entryMap": "legend-stage",
+    "maps": [
+        "legend-stage",
+        "myth-realm"
+    ],
+    "theme": "mythology"
+}

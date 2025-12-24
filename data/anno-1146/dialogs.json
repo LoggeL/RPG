@@ -1,0 +1,13 @@
+{
+    "crusader": {
+        "default": {
+            "text": "Im Namen des Kreuzes marschieren wir. Das Jahr 1146 wird in die Geschichte eingehen.",
+            "choices": [
+                {
+                    "text": "Was ist die Mission?",
+                    "actions": {}
+                }
+            ]
+        }
+    }
+}

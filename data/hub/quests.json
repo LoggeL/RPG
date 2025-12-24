@@ -1,0 +1,16 @@
+{
+    "find_essenz": {
+        "title": "Finde die Essenz des Dramas",
+        "description": "Hilf Sebastian, die verstreute Essenz des Dramas zurückzugewinnen, indem du die Spielwelten betrittst.",
+        "stages": [
+            {
+                "description": "Sprich mit Margot über Vorräte.",
+                "completionFlag": "margot_gave_items"
+            },
+            {
+                "description": "Betritt das Portal 'Die gestohlene Krone'.",
+                "completionFlag": "entered_stolen_crown"
+            }
+        ]
+    }
+}

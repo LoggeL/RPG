@@ -1,0 +1,13 @@
+{
+    "inquisitor": {
+        "default": {
+            "text": "Die Hexen müssen brennen! Aber... sind wirklich alle schuldig?",
+            "choices": [
+                {
+                    "text": "Was ist hier passiert?",
+                    "actions": {}
+                }
+            ]
+        }
+    }
+}

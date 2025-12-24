@@ -1,0 +1,11 @@
+{
+    "id": "goldfieber",
+    "name": "Goldfieber",
+    "description": "Der Goldrausch hat begonnen! Reichtum und Gefahr erwarten dich an der ungezähmten Grenze.",
+    "entryMap": "mining-town",
+    "maps": [
+        "mining-town",
+        "gold-mines"
+    ],
+    "theme": "western"
+}

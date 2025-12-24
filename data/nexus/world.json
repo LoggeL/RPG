@@ -1,0 +1,11 @@
+{
+    "id": "nexus",
+    "name": "Nexus",
+    "description": "Der Kreuzungspunkt aller Geschichten. Wo alle Theaterwelten zusammenlaufen.",
+    "entryMap": "nexus-core",
+    "maps": [
+        "nexus-core",
+        "dimensional-rift"
+    ],
+    "theme": "abstract"
+}

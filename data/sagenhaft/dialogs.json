@@ -1,0 +1,13 @@
+{
+    "storyteller": {
+        "default": {
+            "text": "Willkommen auf der Kreativbühne! Hier werden Legenden lebendig.",
+            "choices": [
+                {
+                    "text": "Erzähle mir eine Geschichte!",
+                    "actions": {}
+                }
+            ]
+        }
+    }
+}

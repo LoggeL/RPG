@@ -1,0 +1,70 @@
+{
+    "name": "Dunkle Zelle (Tutorial)",
+    "width": 10,
+    "height": 10,
+    "playerSpawn": {
+        "x": 2,
+        "y": 2
+    },
+    "layers": [
+        [
+            ["stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone"],
+            ["stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone"],
+            ["stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone"],
+            ["stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone"],
+            ["stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone"],
+            ["stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone"],
+            ["stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone"],
+            ["stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone"],
+            ["stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone"],
+            ["stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone"]
+        ]
+    ],
+    "collision": [
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    ],
+    "objects": [
+        {
+            "id": "cell_door",
+            "type": "door",
+            "x": 5,
+            "y": 9,
+            "locked": true,
+            "keyItem": "key_dungeon",
+            "toMap": "monastery-gates",
+            "message": "Die Tür ist verschlossen. Du brauchst einen Schlüssel.",
+            "contents": {
+                "completeQuest": "tutorial_escape"
+            }
+        },
+        {
+            "id": "tutorial_chest",
+            "type": "chest",
+            "x": 8,
+            "y": 2,
+            "contents": {
+                "items": ["key_dungeon"]
+            },
+            "message": "Du findest einen rostigen Schlüssel im Stroh."
+        },
+        {
+            "id": "tutorial_sign",
+            "type": "sign",
+            "x": 5,
+            "y": 5,
+            "message": "Tutorial: Bewege dich mit den PFEILTASTEN oder WASD. Drücke E oder LEERTASTE, um mit Objekten (wie der Truhe oder der Tür) zu interagieren. Öffne dein Inventar mit I.",
+            "contents": {
+                "startQuest": "tutorial_escape"
+            }
+        }
+    ]
+}

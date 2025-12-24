@@ -1,0 +1,13 @@
+{
+    "fairy": {
+        "default": {
+            "text": "Der Kristall ist in Gefahr... Die Albträume werden stärker.",
+            "choices": [
+                {
+                    "text": "Wie kann ich helfen?",
+                    "actions": {}
+                }
+            ]
+        }
+    }
+}

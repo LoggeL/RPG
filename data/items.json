@@ -1,0 +1,50 @@
+{
+    "potion": {
+        "name": "Heiltrank",
+        "description": "Stellt eine kleine Menge Gesundheit wieder her.",
+        "category": "consumable",
+        "icon": "potion"
+    },
+    "key_dungeon": {
+        "name": "Verlies-Schlüssel",
+        "description": "Ein alter, rostiger Schlüssel.",
+        "category": "key",
+        "icon": "key"
+    },
+    "royal_seal": {
+        "name": "Königliches Siegel",
+        "description": "Das verschollene königliche Siegel des Königreichs.",
+        "category": "quest",
+        "icon": "seal"
+    },
+    "drama_essence": {
+        "name": "Essenz des Dramas",
+        "description": "Eine leuchtende Essenz aus reiner dramatischer Energie.",
+        "category": "quest",
+        "icon": "essence"
+    },
+    "vampire_book": {
+        "name": "Blutsaugen für Anfänger",
+        "description": "Ein altes Buch über Vampire. Verrät eine Schwäche des Grafen.",
+        "category": "quest",
+        "icon": "book"
+    },
+    "ritual_dagger": {
+        "name": "Ritualdolch",
+        "description": "Ein mit Blutspuren überzener Dolch. Kann das Ritual zerstören.",
+        "category": "quest",
+        "icon": "dagger"
+    },
+    "garlic": {
+        "name": "Knoblauch",
+        "description": "Ein stinkender Knoblauchzopf. Hält Vampire fern.",
+        "category": "consumable",
+        "icon": "garlic"
+    },
+    "manor_key": {
+        "name": "Schloss-Schlüssel",
+        "description": "Ein verziertes Schlüsselbund für Graf Harras' Anwesen.",
+        "category": "key",
+        "icon": "key"
+    }
+}

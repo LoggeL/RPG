@@ -1,0 +1,12 @@
+{
+    "id": "verrat-im-kloster",
+    "name": "Verrat im Kloster",
+    "description": "Ein mittelalterliches Mysterium in einem alten Kloster. Decke die Geheimnisse und den Verrat innerhalb seiner heiligen Mauern auf.",
+    "entryMap": "tutorial-cell",
+    "maps": [
+        "tutorial-cell",
+        "monastery-gates",
+        "monastery-interior"
+    ],
+    "theme": "medieval"
+}

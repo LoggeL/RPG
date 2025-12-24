@@ -1,0 +1,13 @@
+{
+    "prospector": {
+        "default": {
+            "text": "Gold! Überall Gold! Aber Vorsicht, die Mine ist gefährlich...",
+            "choices": [
+                {
+                    "text": "Wo finde ich Gold?",
+                    "actions": {}
+                }
+            ]
+        }
+    }
+}

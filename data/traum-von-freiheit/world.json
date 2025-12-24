@@ -1,0 +1,11 @@
+{
+    "id": "traum-von-freiheit",
+    "name": "Traum von Freiheit",
+    "description": "Eine Geschichte von Befreiung und Hoffnung. Kämpfe für die Freiheit gegen überwältigende Widrigkeiten.",
+    "entryMap": "prison-yard",
+    "maps": [
+        "prison-yard",
+        "escape-route"
+    ],
+    "theme": "drama"
+}

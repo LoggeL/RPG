@@ -1,0 +1,122 @@
+{
+    "johann": {
+        "default": {
+            "text": "Was? Wer da? Ich habe keine Zeit für Besucher! Der Graf bereitet das Fest vor.",
+            "choices": [
+                {
+                    "text": "Ich muss zum Grafen. (Einschüchtern)",
+                    "next": "johann_threaten"
+                },
+                {
+                    "text": "[Knoblauch zeigen] Riech mal hieran!",
+                    "condition": "hasItem:garlic",
+                    "actions": {
+                        "removeItem": "garlic",
+                        "setFlag": "johann_distracted"
+                    },
+                    "next": "johann_flee"
+                }
+            ]
+        },
+        "johann_threaten": {
+            "text": "N-nein! Bitte! Ich bin nur der Sekretär! Der Schlüssel zum Hintereingang liegt dort drüben!",
+            "actions": {
+                "giveItem": "manor_key"
+            },
+            "choices": [
+                {
+                    "text": "Danke."
+                }
+            ]
+        },
+        "johann_flee": {
+            "text": "Aaaah! Dieser Gestank! Weg! Ich muss weg!",
+            "actions": {
+                "giveItem": "manor_key"
+            },
+            "choices": [
+                {
+                    "text": "Das war einfach."
+                }
+            ]
+        }
+    },
+    "anastasia": {
+        "default": {
+            "text": "Ein Lebender... Hier an diesem Ort des Todes? Seid Ihr auch gekommen, um 'geehrt' zu werden?",
+            "choices": [
+                {
+                    "text": "Ich suche Emma. Und eine Schwäche des Grafen.",
+                    "next": "anastasia_help"
+                }
+            ]
+        },
+        "anastasia_help": {
+            "text": "Ah, das arme Mädchen. Ihr Schicksal soll das meine sein... Aber es gibt Hoffnung. In diesem Buch steht, wie man das Ritual bricht.",
+            "actions": {
+                "giveItem": "vampire_book",
+                "startQuest": "bluttribut_main",
+                "setFlag": "knows_weakness"
+            },
+            "choices": [
+                {
+                    "text": "Danke, Anastasia.",
+                    "next": "anastasia_dagger"
+                }
+            ]
+        },
+        "anastasia_dagger": {
+            "text": "Sucht den Dolch in der alten Gruft draußen. Nur er kann die Verbindung trennen."
+        }
+    },
+    "harras": {
+        "default": {
+            "text": "Willkommen, mein unerwarteter Gast. Ihr kommt gerade rechtzeitig, um Zeuge der Ewigkeit zu werden.",
+            "choices": [
+                {
+                    "text": "Lass Emma gehen, Harras!",
+                    "next": "harras_fight"
+                }
+            ]
+        },
+        "harras_fight": {
+            "text": "Niemals! Sie ist die Auserwählte! ... Moment, was habt Ihr da?",
+            "choices": [
+                {
+                    "text": "[Dolch benutzen] Dein Ritual endet hier!",
+                    "condition": "hasItem:ritual_dagger",
+                    "next": "harras_defeat"
+                },
+                {
+                    "text": "Ich werde dich aufhalten!",
+                    "next": "harras_bad_end"
+                }
+            ]
+        },
+        "harras_defeat": {
+            "text": "Nein! Das... das kann nicht sein! Meine Macht... schwindet...",
+            "actions": {
+                "completeQuest": "bluttribut_main",
+                "giveItem": "drama_essence"
+            },
+            "choices": [
+                {
+                    "text": "Es ist vorbei."
+                }
+            ]
+        },
+        "harras_bad_end": {
+            "text": "Törichtes Wesen. Ihr könnt mich nicht besiegen!"
+        }
+    },
+    "emma": {
+        "default": {
+            "text": "Hilfe! Er ist wahnsinnig! Bitte, hol mich hier raus!",
+            "choices": [
+                {
+                    "text": "Keine Sorge, ich bringe dich hier raus."
+                }
+            ]
+        }
+    }
+}

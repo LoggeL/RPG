@@ -1,0 +1,11 @@
+{
+    "id": "anno-1146",
+    "name": "Anno 1146",
+    "description": "Reise zurück zum Zweiten Kreuzzug. Navigiere durch Politik, Glauben und Krieg in einem entscheidenden Moment der Geschichte.",
+    "entryMap": "crusader-camp",
+    "maps": [
+        "crusader-camp",
+        "holy-city"
+    ],
+    "theme": "historical"
+}

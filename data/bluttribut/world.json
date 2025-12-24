@@ -1,0 +1,11 @@
+{
+    "id": "bluttribut",
+    "name": "Bluttribut",
+    "description": "Eine dunkle Geschichte über Opfer und uralte Rituale. Welcher Preis muss für die Macht bezahlt werden?",
+    "entryMap": "manor-exterior",
+    "maps": [
+        "manor-exterior",
+        "manor-interior"
+    ],
+    "theme": "dark-fantasy"
+}

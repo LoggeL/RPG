@@ -1,0 +1,13 @@
+{
+    "rebel": {
+        "default": {
+            "text": "Die Konzerne kontrollieren alles. Aber wir werden uns erheben!",
+            "choices": [
+                {
+                    "text": "Wie kann ich helfen?",
+                    "actions": {}
+                }
+            ]
+        }
+    }
+}

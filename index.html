@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theater Nexus RPG</title>
+    <meta name="description" content="Ein Top-Down 2D-Rollenspiel, in dem du durch magische Portale in Theaterstücke reist">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="game-container">
+        <!-- Menu Screen -->
+        <div id="menu-screen" class="screen active">
+            <div class="menu-content">
+                <h1 class="game-title">Theater Nexus</h1>
+                <p class="game-subtitle">Eine Geschichte in Geschichten</p>
+                <div class="menu-buttons">
+                    <button id="btn-new-game" class="menu-btn">Neues Spiel</button>
+                    <button id="btn-continue" class="menu-btn" disabled>Fortsetzen</button>
+                </div>
+                <p class="menu-controls">Steuerung: WASD zum Bewegen, E zum Interagieren, I für Inventar, ESC für Menü</p>
+            </div>
+        </div>
+
+        <!-- Character Creation Screen -->
+        <div id="character-screen" class="screen">
+            <div class="character-content">
+                <h2>Erstelle deinen Charakter</h2>
+                <div class="variant-selection">
+                    <button class="variant-btn selected" data-variant="a">🎭</button>
+                    <button class="variant-btn" data-variant="b">🎪</button>
+                    <button class="variant-btn" data-variant="c">🎬</button>
+                    <button class="variant-btn" data-variant="d">🎨</button>
+                </div>
+                <div class="name-input">
+                    <label for="player-name">Dein Name:</label>
+                    <input type="text" id="player-name" maxlength="20" placeholder="Name eingeben...">
+                </div>
+                <button id="btn-start" class="menu-btn">Reise beginnen</button>
+            </div>
+        </div>
+
+        <!-- Game World Screen -->
+        <div id="game-screen" class="screen">
+            <div id="game-world">
+                <div id="map-container"></div>
+                <div id="entities-container"></div>
+                <div id="player" class="entity player"></div>
+            </div>
+
+            <!-- HUD -->
+            <div id="hud">
+                <div id="hud-hint" class="hud-element hidden">E zum Interagieren</div>
+                <div id="hud-location" class="hud-element">Theater-Hauptsaal</div>
+                <div id="hud-save" class="hud-element hidden">💾 Gespeichert</div>
+            </div>
+
+            <!-- Notification Toast -->
+            <div id="notification" class="notification hidden">
+                <span id="notification-text"></span>
+            </div>
+        </div>
+
+        <!-- Dialog Overlay -->
+        <div id="dialog-overlay" class="overlay hidden">
+            <div id="dialog-box">
+                <div id="dialog-speaker"></div>
+                <div id="dialog-text"></div>
+                <div id="dialog-choices"></div>
+                <div id="dialog-continue" class="hidden">Leertaste zum Fortfahren...</div>
+            </div>
+        </div>
+
+        <!-- Inventory Overlay -->
+        <div id="inventory-overlay" class="overlay hidden">
+            <div class="book-container">
+                <div id="inventory-panel" class="book-page left-page">
+                    <div class="panel-header">
+                        <h3>Inventar</h3>
+                    </div>
+                    <div id="inventory-items"></div>
+                </div>
+                <div id="quest-panel" class="book-page right-page">
+                    <div class="panel-header">
+                        <h3>Quests</h3>
+                        <button id="close-inventory" class="close-btn">×</button>
+                    </div>
+                    <div id="quest-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pause Menu Overlay -->
+        <div id="pause-overlay" class="overlay hidden">
+            <div id="pause-menu">
+                <h2>Spiel pausiert</h2>
+                <div class="pause-buttons">
+                    <button id="btn-resume" class="menu-btn">Fortsetzen</button>
+                    <button id="btn-save" class="menu-btn">Spiel speichern</button>
+                    <button id="btn-quit" class="menu-btn secondary">Zurück zum Hauptmenü</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>

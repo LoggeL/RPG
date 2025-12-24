@@ -1,0 +1,10 @@
+{
+    "id": "hub",
+    "name": "Das Theater des Regisseurs",
+    "description": "Sebastians Theater, wo alle Geschichten beginnen.",
+    "entryMap": "theater-main",
+    "maps": [
+        "theater-main",
+        "portal-chamber"
+    ]
+}

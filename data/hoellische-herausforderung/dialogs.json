@@ -1,0 +1,13 @@
+{
+    "demon": {
+        "default": {
+            "text": "Willkommen in der Unterwelt, Sterblicher. Deine Prüfungen beginnen...",
+            "choices": [
+                {
+                    "text": "Ich nehme die Herausforderung an!",
+                    "actions": {}
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "id": "hoellische-herausforderung",
+    "name": "Eine höllische Herausforderung",
+    "description": "Ein Abstieg in die Unterwelt. Stelle dich Prüfungen jenseits menschlichen Verständnisses.",
+    "entryMap": "infernal-gates",
+    "maps": [
+        "infernal-gates",
+        "circle-of-trials"
+    ],
+    "theme": "infernal"
+}

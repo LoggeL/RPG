@@ -1,0 +1,11 @@
+{
+    "id": "malleus-maleficarum",
+    "name": "Malleus Maleficarum",
+    "description": "Die Hexenverfolgungen haben begonnen. Navigiere durch die Hysterie und decke das wahre Böse auf, das im Schatten lauert.",
+    "entryMap": "village-square",
+    "maps": [
+        "village-square",
+        "witch-hunters-lodge"
+    ],
+    "theme": "horror"
+}

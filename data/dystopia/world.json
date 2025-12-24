@@ -1,0 +1,11 @@
+{
+    "id": "dystopia",
+    "name": "Dystopia",
+    "description": "Eine düstere Zukunft, in der Hoffnung verboten ist. Kannst du den Funken der Rebellion entfachen?",
+    "entryMap": "slums",
+    "maps": [
+        "slums",
+        "corporate-tower"
+    ],
+    "theme": "cyberpunk"
+}

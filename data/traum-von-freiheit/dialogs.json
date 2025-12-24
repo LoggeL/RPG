@@ -1,0 +1,13 @@
+{
+    "prisoner": {
+        "default": {
+            "text": "Freiheit... ein Traum, den wir nicht aufgeben dürfen.",
+            "choices": [
+                {
+                    "text": "Wie kann ich helfen?",
+                    "actions": {}
+                }
+            ]
+        }
+    }
+}

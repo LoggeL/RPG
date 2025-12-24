@@ -1,0 +1,11 @@
+{
+    "id": "kristall-der-traeume",
+    "name": "Der Kristall der Träume",
+    "description": "Ein magisches Reich, in dem Träume physische Form annehmen. Beschütze den Kristall, der die Realität zusammenhält.",
+    "entryMap": "dream-forest",
+    "maps": [
+        "dream-forest",
+        "crystal-cavern"
+    ],
+    "theme": "fantasy"
+}

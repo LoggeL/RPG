@@ -1,0 +1,13 @@
+{
+    "keeper": {
+        "default": {
+            "text": "Alle Geschichten sind hier verbunden. Der Nexus ist das Herz aller Welten.",
+            "choices": [
+                {
+                    "text": "Was ist der Nexus?",
+                    "actions": {}
+                }
+            ]
+        }
+    }
+}

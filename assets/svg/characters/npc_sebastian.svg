@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="100%" height="100%">
+    <defs>
+        <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="1"/>
+            <feOffset dx="1" dy="1" result="offsetblur"/>
+            <feComponentTransfer>
+                <feFuncA type="linear" slope="0.5"/>
+            </feComponentTransfer>
+            <feMerge>
+                <feMergeNode in="offsetblur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+        <clipPath id="cut-face"><rect x="9" y="2" width="7" height="14" /></clipPath>
+        <clipPath id="cut-face-r"><rect x="16" y="2" width="7" height="14" /></clipPath>
+    </defs>
+    
+    <ellipse cx="16" cy="29" rx="10" ry="3" fill="black" opacity="0.3" />
+
+    <g id="down" display="none">
+        <!-- Sebastian: Green tunic, beard, older -->
+        <rect x="12" y="22" width="3" height="8" fill="#3e2723" />
+        <rect x="17" y="22" width="3" height="8" fill="#3e2723" />
+        <rect x="11" y="29" width="5" height="2" rx="1" fill="#1a1a1a" />
+        <rect x="16" y="29" width="5" height="2" rx="1" fill="#1a1a1a" />
+        <path d="M10,14 L22,14 L24,24 L8,24 Z" fill="#2ecc71" /> <!-- Green Robe -->
+        <path d="M10,15 L7,20 L9,21 L12,16 Z" fill="#27ae60" />
+        <path d="M22,15 L25,20 L23,21 L20,16 Z" fill="#27ae60" />
+        <circle cx="8" cy="21" r="1.5" fill="#e0ac69" />
+        <circle cx="24" cy="21" r="1.5" fill="#e0ac69" />
+        <circle cx="16" cy="10" r="6" fill="#e0ac69" />
+        <!-- Grey Beard -->
+        <path d="M11,12 Q16,18 21,12 L21,10 Q16,10 11,10 Z" fill="#95a5a6" />
+        <!-- Hair -->
+        <path d="M10,8 Q16,4 22,8 L22,10 L10,10 Z" fill="#95a5a6" />
+        <circle cx="14" cy="10" r="0.8" fill="black" />
+        <circle cx="18" cy="10" r="0.8" fill="black" />
+    </g>
+
+    <g id="up" display="none">
+        <rect x="12" y="22" width="3" height="8" fill="#3e2723" />
+        <rect x="17" y="22" width="3" height="8" fill="#3e2723" />
+        <rect x="11" y="29" width="5" height="2" rx="1" fill="#1a1a1a" />
+        <rect x="16" y="29" width="5" height="2" rx="1" fill="#1a1a1a" />
+        <path d="M10,14 L22,14 L24,24 L8,24 Z" fill="#2ecc71" />
+        <path d="M10,15 L7,20 L9,21 L12,16 Z" fill="#27ae60" />
+        <path d="M22,15 L25,20 L23,21 L20,16 Z" fill="#27ae60" />
+        <circle cx="8" cy="21" r="1.5" fill="#e0ac69" />
+        <circle cx="24" cy="21" r="1.5" fill="#e0ac69" />
+        <circle cx="16" cy="10" r="6" fill="#95a5a6" />
+    </g>
+
+    <g id="left" display="none">
+        <g transform="scale(-1, 1) translate(-32, 0)">
+            <rect x="14" y="22" width="4" height="8" fill="#3e2723" />
+            <rect x="13" y="29" width="6" height="2" rx="1" fill="#1a1a1a" />
+            <rect x="12" y="14" width="8" height="10" fill="#2ecc71" />
+            <rect x="14" y="16" width="4" height="6" fill="#27ae60" />
+            <circle cx="16" cy="23" r="1.5" fill="#e0ac69" />
+            <circle cx="16" cy="10" r="6" fill="#e0ac69" />
+            <path d="M16,4 Q22,4 22,10 L22,12 L16,12 Z" fill="#95a5a6" />
+            <path d="M12,12 Q14,15 16,12" fill="#95a5a6" /> <!-- Beard Profile -->
+        </g>
+    </g>
+
+    <g id="right" display="none">
+        <rect x="14" y="22" width="4" height="8" fill="#3e2723" />
+        <rect x="13" y="29" width="6" height="2" rx="1" fill="#1a1a1a" />
+        <rect x="12" y="14" width="8" height="10" fill="#2ecc71" />
+        <rect x="14" y="16" width="4" height="6" fill="#27ae60" />
+        <circle cx="16" cy="23" r="1.5" fill="#e0ac69" />
+        <circle cx="16" cy="10" r="6" fill="#e0ac69" />
+        <path d="M16,4 Q22,4 22,10 L22,12 L16,12 Z" fill="#95a5a6" />
+        <path d="M16,12 Q18,15 20,12" fill="#95a5a6" /> <!-- Beard Profile -->
+    </g>
+</svg>

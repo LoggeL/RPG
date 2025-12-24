@@ -1,0 +1,79 @@
+{
+    "name": "Manor Exterior",
+    "width": 20,
+    "height": 15,
+    "playerSpawn": {
+        "x": 10,
+        "y": 12
+    },
+    "layers": [
+        [
+            ["stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone"],
+            ["stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "door", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone"],
+            ["grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "stone", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass"],
+            ["grass", "grass", "grave", "grave", "grass", "grass", "grass", "grass", "grass", "stone", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass"],
+            ["grass", "grave", "grave", "grave", "grass", "grass", "grass", "grass", "grass", "stone", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass"],
+            ["grass", "grass", "grave", "grass", "grass", "grass", "grass", "grass", "grass", "stone", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass"],
+            ["grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "stone", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass"],
+            ["grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "stone", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass"],
+            ["grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "stone", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass"],
+            ["grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "stone", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass"],
+            ["grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "stone", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass"],
+            ["grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "stone", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass"],
+            ["stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone"],
+            ["stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone"],
+            ["stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone"]
+        ]
+    ],
+    "collision": [
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    ],
+    "npcs": [
+        {
+            "id": "johann",
+            "name": "Johann",
+            "x": 10,
+            "y": 3,
+            "dialogId": "johann"
+        }
+    ],
+    "objects": [
+        {
+            "id": "portal_hub",
+            "type": "portal",
+            "x": 10,
+            "y": 14,
+            "toWorld": "hub"
+        },
+        {
+            "id": "door_manor",
+            "type": "door",
+            "x": 10,
+            "y": 1,
+            "toMap": "manor-interior",
+            "keyItem": "manor_key"
+        },
+        {
+            "id": "chest_dagger",
+            "type": "chest",
+            "x": 2,
+            "y": 5,
+            "item": "ritual_dagger",
+            "amount": 1
+        }
+    ]
+}

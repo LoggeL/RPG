@@ -1,0 +1,28 @@
+{
+    "monk_gregor": {
+        "default": {
+            "text": "Willkommen im Kloster, Fremder. Diese heiligen Mauern bergen dunkle Geheimnisse...",
+            "choices": [
+                {
+                    "text": "Was ist hier geschehen?",
+                    "next": "monk_story"
+                },
+                {
+                    "text": "Ich muss weiter.",
+                    "actions": {}
+                }
+            ]
+        }
+    },
+    "monk_story": {
+        "text": "Ein Bruder wurde tot aufgefunden. Vergiftet, sagen manche. Verrat, flüstern andere. Die Wahrheit... muss noch ans Licht gebracht werden.",
+        "choices": [
+            {
+                "text": "Ich werde der Sache nachgehen.",
+                "actions": {
+                    "startQuest": "kloster_mystery"
+                }
+            }
+        ]
+    }
+}
