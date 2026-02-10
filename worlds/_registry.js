@@ -15,4 +15,9 @@ export const worldRegistry = [
     name: 'Noxius 2086',
     isHub: false,
   },
+  {
+    id: 'bluttribut',
+    name: 'Bluttribut',
+    isHub: false,
+  },
 ];

@@ -10,6 +10,7 @@ const themePaths = {
   'theater-backstage': '../assets/tiles/theater-backstage.js',
   'nexus-undertown': '../assets/tiles/nexus-undertown.js',
   'nexus-wasteland': '../assets/tiles/nexus-wasteland.js',
+  'bluttribut-gothic': '../assets/tiles/bluttribut-gothic.js',
 };
 
 /**

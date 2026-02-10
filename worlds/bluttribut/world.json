@@ -1,0 +1,425 @@
+{
+  "id": "bluttribut",
+  "name": "Bluttribut — Blutsaugen für Anfänger",
+  "entryRoom": "dorfplatz",
+  "theme": {
+    "primaryColor": "#0a1428",
+    "accentColor": "#6a1020"
+  },
+  "playerSprite": "<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><rect x='14' y='14' width='12' height='18' fill='#3a2818' rx='2'/><circle cx='20' cy='11' r='6' fill='#e8c8a0'/><path d='M14 9 Q14 4 20 3 Q26 4 26 9' fill='#5a3018'/><circle cx='18' cy='10.5' r='1' fill='#222'/><circle cx='22' cy='10.5' r='1' fill='#222'/><path d='M18 13 Q20 14 22 13' fill='none' stroke='#a08870' stroke-width='0.5'/><rect x='13' y='16' width='14' height='3' fill='#6a4a28' rx='1'/><circle cx='20' cy='17' r='1' fill='#d4923a' opacity='0.5'/><rect x='14' y='32' width='5' height='4' fill='#2a1a10' rx='1'/><rect x='21' y='32' width='5' height='4' fill='#2a1a10' rx='1'/></svg>",
+  "rooms": {
+    "dorfplatz": {
+      "name": "Dorfplatz",
+      "description": "Der alte Dorfplatz von Krähenfels. Kopfsteinpflaster, ein Brunnen in der Mitte, und Marktstände säumen den Rand. Die Sonne geht unter.",
+      "backgroundCSS": "radial-gradient(ellipse at 50% 30%, #1a1428 0%, #0a1020 40%, #050810 100%)",
+      "exits": {
+        "south": { "roomId": "mayor-house", "label": "Haus des Bürgermeisters" },
+        "north": { "roomId": "dining-hall", "label": "Grafenschloss", "locked": true, "requiredFlag": "opferwahl" }
+      },
+      "npcs": ["wirt", "emma", "lisa", "johann"],
+      "items": ["blumen"],
+      "map": {
+        "width": 20,
+        "height": 15,
+        "theme": "bluttribut-gothic",
+        "playerSpawn": { "x": 10, "y": 13 },
+        "layers": {
+          "ground": [
+            "VVVVVVVVVLVVVVVVVVVV",
+            "VccccccccccccccccccV",
+            "VccccccccccccccccccV",
+            "VccccccccccccccccccV",
+            "VccccccccccccccccccV",
+            "VccccccccccccccccccV",
+            "VccccccccccccccccccV",
+            "PccccccccccccccccccV",
+            "VccccccccccccccccccV",
+            "VccccccccccccccccccV",
+            "VccccccccccccccccccV",
+            "VccccccccccccccccccV",
+            "VccccccccccccccccccV",
+            "VccccccccccccccccccV",
+            "VVVVVVVVVdVVVVVVVVVV"
+          ],
+          "objects": [
+            ".........l..........",
+            "..M...............M.",
+            "....................",
+            "..B..........B......",
+            "....................",
+            ".........f..........",
+            "....................",
+            "....................",
+            "....................",
+            ".........f..........",
+            "....................",
+            "..B..........B......",
+            "....................",
+            "....................",
+            "...................."
+          ]
+        },
+        "legend": {
+          "V": "wall-village",
+          "v": "wall-village",
+          "c": "cobblestone",
+          "d": "door-wood-village",
+          "L": "door-castle-locked",
+          "P": "door-wood-village",
+          "M": "market-stand",
+          "B": "bench-wood",
+          "f": "flower-garland",
+          "l": "candelabra",
+          ".": null
+        },
+        "exits": [
+          {
+            "tiles": [[9, 14]],
+            "target": "mayor-house",
+            "label": "Haus des Bürgermeisters",
+            "spawnAt": { "x": 8, "y": 1 }
+          },
+          {
+            "tiles": [[9, 0]],
+            "target": "dining-hall",
+            "label": "Grafenschloss",
+            "locked": true,
+            "requiredFlag": "opferwahl",
+            "spawnAt": { "x": 10, "y": 12 }
+          },
+          {
+            "tiles": [[0, 7]],
+            "target": "lobby:main-hall",
+            "label": "Zurück zum Theater",
+            "spawnAt": { "x": 10, "y": 13 }
+          }
+        ],
+        "entities": {
+          "npcs": {
+            "wirt": { "x": 14, "y": 5 },
+            "emma": { "x": 5, "y": 7 },
+            "lisa": { "x": 7, "y": 7 },
+            "johann": { "x": 15, "y": 10 }
+          },
+          "items": {
+            "blumen": { "x": 12, "y": 8 }
+          }
+        }
+      }
+    },
+    "mayor-house": {
+      "name": "Haus des Bürgermeisters",
+      "description": "Das stattliche Fachwerkhaus von Bürgermeister Albert. Holzdielen knarzen, alte Gemälde hängen an den Wänden.",
+      "backgroundCSS": "radial-gradient(ellipse at 50% 40%, #2a1a10 0%, #1a1208 50%, #0d0a06 100%)",
+      "exits": {
+        "north": { "roomId": "dorfplatz", "label": "Zurück zum Dorfplatz" }
+      },
+      "npcs": ["albert", "ida"],
+      "items": ["brief"],
+      "map": {
+        "width": 16,
+        "height": 12,
+        "theme": "bluttribut-gothic",
+        "playerSpawn": { "x": 8, "y": 1 },
+        "layers": {
+          "ground": [
+            "TTTTTTTTdTTTTTTT",
+            "TwwwwwwwwwwwwwwT",
+            "TwwwwwwwwwwwwwwT",
+            "TwwwwwwwwwwwwwwT",
+            "TwwwwwwwwwwwwwwT",
+            "TwwwwwwwwwwwwwwT",
+            "TwwwwwwwwwwwwwwT",
+            "TwwwwwwwwwwwwwwT",
+            "TwwwwwwwwwwwwwwT",
+            "TwwwwwwwwwwwwwwT",
+            "TwwwwwwwwwwwwwwT",
+            "TTTTTTTTTTTTTTTT"
+          ],
+          "objects": [
+            "................",
+            "................",
+            ".W.....P.....D..",
+            "................",
+            "................",
+            ".......t........",
+            "................",
+            "................",
+            "................",
+            ".O..............",
+            "................",
+            "................"
+          ]
+        },
+        "legend": {
+          "T": "wall-timber",
+          "t": "wall-timber",
+          "w": "wooden-floor",
+          "d": "door-wood-village",
+          "W": "wardrobe",
+          "P": "painting-frame",
+          "D": "desk-wood",
+          "O": "stove",
+          ".": null
+        },
+        "exits": [
+          {
+            "tiles": [[8, 0]],
+            "target": "dorfplatz",
+            "label": "Zurück zum Dorfplatz",
+            "spawnAt": { "x": 9, "y": 13 }
+          }
+        ],
+        "entities": {
+          "npcs": {
+            "albert": { "x": 8, "y": 5 },
+            "ida": { "x": 12, "y": 7 }
+          },
+          "items": {
+            "brief": { "x": 13, "y": 3 }
+          }
+        }
+      }
+    },
+    "dining-hall": {
+      "name": "Grafenschloss — Speisesaal",
+      "description": "Der düstere Speisesaal des Grafenschlosses. Kerzenleuchter werfen flackernde Schatten. Ein langer Tisch dominiert den Raum.",
+      "backgroundCSS": "radial-gradient(ellipse at 50% 20%, #1a1428 0%, #0a0e1e 40%, #04060e 100%)",
+      "exits": {
+        "east": { "roomId": "emmas-chamber", "label": "Emmas Gemach" },
+        "west": { "roomId": "library", "label": "Bibliothek" },
+        "south": { "roomId": "dorfplatz", "label": "Zurück zum Dorf" }
+      },
+      "npcs": ["ida-castle", "graf-harras"],
+      "items": [],
+      "map": {
+        "width": 20,
+        "height": 14,
+        "theme": "bluttribut-gothic",
+        "playerSpawn": { "x": 10, "y": 12 },
+        "layers": {
+          "ground": [
+            "SSSSSSSSSSSSSSSSSSss",
+            "Sssssssssssssssssssn",
+            "Sssssssssssssssssssn",
+            "Sssssssssssssssssssn",
+            "Sssssssssssssssssssn",
+            "Sssssssssssssssssssn",
+            "Dssssssssssssssssssn",
+            "Sssssssssssssssssssn",
+            "Sssssssssssssssssssn",
+            "Sssssssssssssssssssn",
+            "Sssssssssssssssssssn",
+            "Sssssssssssssssssssn",
+            "SsssssssssssssssssDn",
+            "SSSSSSSSSSdSSSSSSSss"
+          ],
+          "objects": [
+            "....................",
+            "..u..............u..",
+            "....................",
+            "..P.....l....l..P...",
+            "....................",
+            "....ttttttttttt.....",
+            "....................",
+            "....ttttttttttt.....",
+            "....................",
+            "..P..............P..",
+            "....................",
+            "........A...........",
+            "....................",
+            "...................."
+          ]
+        },
+        "legend": {
+          "S": "wall-stone-castle",
+          "s": "stone-floor",
+          "n": "wall-stone-castle",
+          "d": "door-castle",
+          "D": "door-castle",
+          "t": "table-wood",
+          "u": "curtain-velvet",
+          "l": "candelabra",
+          "P": "painting-frame",
+          "A": "staircase",
+          ".": null
+        },
+        "exits": [
+          {
+            "tiles": [[9, 13]],
+            "target": "dorfplatz",
+            "label": "Zurück zum Dorf",
+            "spawnAt": { "x": 9, "y": 1 }
+          },
+          {
+            "tiles": [[18, 12]],
+            "target": "emmas-chamber",
+            "label": "Emmas Gemach",
+            "spawnAt": { "x": 1, "y": 6 }
+          },
+          {
+            "tiles": [[0, 6]],
+            "target": "library",
+            "label": "Bibliothek",
+            "spawnAt": { "x": 10, "y": 5 }
+          }
+        ],
+        "entities": {
+          "npcs": {
+            "ida-castle": { "x": 14, "y": 4 },
+            "graf-harras": { "x": 10, "y": 6 }
+          },
+          "items": {}
+        }
+      }
+    },
+    "emmas-chamber": {
+      "name": "Emmas Gemach",
+      "description": "Ein düsteres, aber elegant eingerichtetes Gemach. Schwere burgunderfarbene Vorhänge bedecken die Fenster. Ein Himmelbett steht in der Ecke.",
+      "backgroundCSS": "radial-gradient(ellipse at 50% 50%, #2a1020 0%, #140a18 50%, #080410 100%)",
+      "exits": {
+        "west": { "roomId": "dining-hall", "label": "Zurück zum Speisesaal" },
+        "south": { "roomId": "library", "label": "Zur Bibliothek" }
+      },
+      "npcs": ["emma-castle", "anastasia"],
+      "items": [],
+      "map": {
+        "width": 14,
+        "height": 12,
+        "theme": "bluttribut-gothic",
+        "playerSpawn": { "x": 1, "y": 6 },
+        "layers": {
+          "ground": [
+            "SSSSSSSSSSSSss",
+            "Sbbbbbbbbbbbbn",
+            "Sbbbbbbbbbbbbn",
+            "Sbbbbbbbbbbbbn",
+            "Sbbbbbbbbbbbbn",
+            "Sbbbbbbbbbbbbn",
+            "Dsbbbbbbbbbssn",
+            "Sbbbbbbbbbbbbn",
+            "Sbbbbbbbbbbbbn",
+            "Sbbbbbbbbbbbbn",
+            "Sbbbbbbbbbbbbn",
+            "SSSSSSSSdSSSss"
+          ],
+          "objects": [
+            "..............",
+            "..u........u..",
+            "...E..........",
+            "..............",
+            "......l.......",
+            "..............",
+            "..............",
+            "..............",
+            "..W...........",
+            "..............",
+            "..............",
+            ".............."
+          ]
+        },
+        "legend": {
+          "S": "wall-stone-castle",
+          "s": "wall-stone-castle",
+          "n": "wall-stone-castle",
+          "b": "carpet-burgundy",
+          "d": "door-castle",
+          "D": "door-castle",
+          "E": "bed-canopy",
+          "u": "curtain-velvet",
+          "l": "candelabra",
+          "W": "wardrobe",
+          ".": null
+        },
+        "exits": [
+          {
+            "tiles": [[0, 6]],
+            "target": "dining-hall",
+            "label": "Zurück zum Speisesaal",
+            "spawnAt": { "x": 17, "y": 6 }
+          },
+          {
+            "tiles": [[8, 11]],
+            "target": "library",
+            "label": "Zur Bibliothek",
+            "spawnAt": { "x": 6, "y": 1 }
+          }
+        ],
+        "entities": {
+          "npcs": {
+            "emma-castle": { "x": 7, "y": 4 },
+            "anastasia": { "x": 10, "y": 8 }
+          },
+          "items": {}
+        }
+      }
+    },
+    "library": {
+      "name": "Bibliothek",
+      "description": "Eine verstaubte Bibliothek voller alter Folianten. Der Geruch von altem Papier und Kerzenwachs liegt in der Luft.",
+      "backgroundCSS": "radial-gradient(ellipse at 50% 40%, #1a1428 0%, #0e0c1e 50%, #06040e 100%)",
+      "exits": {
+        "north": { "roomId": "dining-hall", "label": "Zurück zum Speisesaal" }
+      },
+      "npcs": ["anastasia-library", "lisa-castle"],
+      "items": [],
+      "map": {
+        "width": 12,
+        "height": 10,
+        "theme": "bluttribut-gothic",
+        "playerSpawn": { "x": 6, "y": 1 },
+        "layers": {
+          "ground": [
+            "SSSSSSdSSSss",
+            "Sssssssssssn",
+            "Sssssssssssn",
+            "Sssssssssssn",
+            "Sssssssssssn",
+            "Sssssssssssn",
+            "Sssssssssssn",
+            "Sssssssssssn",
+            "Sssssssssssn",
+            "SSSSSSSSSSss"
+          ],
+          "objects": [
+            "............",
+            ".K........K.",
+            "............",
+            ".K..l...D...",
+            "............",
+            ".K..........",
+            "............",
+            ".K........K.",
+            "............",
+            "............"
+          ]
+        },
+        "legend": {
+          "S": "wall-stone-castle",
+          "s": "wall-stone-castle",
+          "n": "wall-stone-castle",
+          "d": "door-castle",
+          "K": "bookshelf",
+          "D": "desk-wood",
+          "l": "candelabra",
+          ".": null
+        },
+        "exits": [
+          {
+            "tiles": [[6, 0]],
+            "target": "dining-hall",
+            "label": "Zurück zum Speisesaal",
+            "spawnAt": { "x": 1, "y": 6 }
+          }
+        ],
+        "entities": {
+          "npcs": {
+            "anastasia-library": { "x": 6, "y": 5 },
+            "lisa-castle": { "x": 8, "y": 7 }
+          },
+          "items": {}
+        }
+      }
+    }
+  }
+}

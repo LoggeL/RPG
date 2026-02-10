@@ -1,0 +1,22 @@
+{
+  "quests": {
+    "bluttribut": {
+      "id": "bluttribut",
+      "name": "Bluttribut",
+      "description": "Rette Emma vor dem Grafen Harras und beende den uralten Bluttribut, der das Dorf seit Jahrhunderten heimsucht.",
+      "stages": [
+        { "id": "visit-mayor", "description": "Besuche den Bürgermeister", "type": "dialogue", "targetNpc": "albert" },
+        { "id": "talk-emma", "description": "Sprich mit Emma auf dem Dorfplatz", "type": "dialogue", "targetNpc": "emma" },
+        { "id": "attend-ceremony", "description": "Nimm am Mittsommerfest teil", "type": "dialogue", "targetNpc": "johann" },
+        { "id": "enter-castle", "description": "Betritt das Grafenschloss", "type": "exploration", "targetRoom": "dining-hall" },
+        { "id": "find-anastasia", "description": "Finde den Geist Anastasia", "type": "dialogue", "targetNpc": "anastasia" },
+        { "id": "search-library", "description": "Durchsuche die Bibliothek", "type": "dialogue", "targetNpc": "anastasia-library" },
+        { "id": "confront-graf", "description": "Konfrontiere den Grafen bei der Zeremonie", "type": "dialogue", "targetNpc": "graf-harras" }
+      ],
+      "rewards": {
+        "flags": ["bluttribut-complete"]
+      },
+      "isMasterQuest": true
+    }
+  }
+}

@@ -13,7 +13,8 @@
       "backgroundCSS": "radial-gradient(ellipse at 50% 30%, #2a1f14 0%, #1a1410 40%, #0d0a07 100%)",
       "exits": {
         "east": { "roomId": "backstage", "label": "Backstage" },
-        "north": { "roomId": "placeholder:entrance", "label": "Mysteriöse Tür", "locked": true, "requiredFlag": "placeholder-unlocked" }
+        "north": { "roomId": "placeholder:entrance", "label": "Mysteriöse Tür", "locked": true, "requiredFlag": "placeholder-unlocked" },
+        "east-portal": { "roomId": "bluttribut:dorfplatz", "label": "Bluttribut-Portal", "locked": true, "requiredFlag": "bluttribut-unlocked" }
       },
       "npcs": ["sebastian"],
       "items": [],
@@ -28,7 +29,7 @@
             "wffccccccccccccccffw",
             "wfccccccccccccccccfw",
             "wfccccccccccccccccfw",
-            "wfccccccccccccccccfw",
+            "wfccccccccccccccccfB",
             "wfccccccccccccccccfw",
             "wfccccccccccccccccfw",
             "Pfccccocccccocccccfw",
@@ -70,6 +71,7 @@
           "s": "velvet-seat",
           "L": "chandelier",
           "P": "door-portal",
+          "B": "door-portal",
           "r": "railing",
           ".": null
         },
@@ -95,6 +97,14 @@
             "locked": true,
             "requiredFlag": "nexus-unlocked",
             "spawnAt": { "x": 18, "y": 7 }
+          },
+          {
+            "tiles": [[19, 4]],
+            "target": "bluttribut:dorfplatz",
+            "label": "Bluttribut-Portal",
+            "locked": true,
+            "requiredFlag": "bluttribut-unlocked",
+            "spawnAt": { "x": 10, "y": 13 }
           }
         ],
         "entities": {

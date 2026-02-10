@@ -1,0 +1,540 @@
+{
+  "dialogues": {
+    "wirt-intro": {
+      "nodes": {
+        "start": {
+          "speaker": "Der Wirt",
+          "text": "Na, ein neues Gesicht! Setz dich, trink was. Aber pass auf — heute Nacht ist Mittsommerfest. Und das bedeutet...",
+          "next": "explain"
+        },
+        "explain": {
+          "speaker": "Der Wirt",
+          "text": "...der Bluttribut. Jedes Jahr wählt der Graf ein junges Mädchen aus dem Dorf. Die 'Auserwählte' geht ins Schloss und kommt... verändert zurück. Blass, still, mit zwei kleinen Malen am Hals.",
+          "next": "choice-1"
+        },
+        "choice-1": {
+          "type": "choice",
+          "choices": [
+            { "text": "Das klingt nach Vampiren!", "next": "vampir-react" },
+            { "text": "Und niemand tut was dagegen?", "next": "nobody-cares" },
+            { "text": "Was hat das mit mir zu tun?", "next": "your-problem" }
+          ]
+        },
+        "vampir-react": {
+          "speaker": "Der Wirt",
+          "text": "Pssst! Das Wort sagt hier keiner laut. Der Graf hat... Einfluss. Aber ja, du hast Recht. Und dieses Jahr könnte es jemanden treffen, der dir am Herzen liegt.",
+          "next": "emma-hint"
+        },
+        "nobody-cares": {
+          "speaker": "Der Wirt",
+          "text": "Was sollen wir tun? Der Graf besitzt das Land, die Felder, alles. Ohne ihn verhungern wir. Aber dieses Jahr... dieses Jahr ist es anders.",
+          "next": "emma-hint"
+        },
+        "your-problem": {
+          "speaker": "Der Wirt",
+          "text": "Mehr als du denkst, Junge. Du bist doch der Hans, oder? Der Verlobte von Emma? Dann hör gut zu.",
+          "next": "emma-hint"
+        },
+        "emma-hint": {
+          "speaker": "Der Wirt",
+          "text": "Emma, deine Verlobte, steht auf der Liste. Der Bürgermeister Albert weiß mehr — geh zu ihm. Sein Haus ist im Süden. Und Hans... sei vorsichtig.",
+          "next": "choice-accept"
+        },
+        "choice-accept": {
+          "type": "choice",
+          "choices": [
+            { "text": "Ich werde Emma beschützen!", "next": "accept", "setFlag": "quest-accepted", "startQuest": "bluttribut" },
+            { "text": "Ich sehe mich erst mal um.", "next": "decline" }
+          ]
+        },
+        "accept": {
+          "speaker": "Der Wirt",
+          "text": "Gut, Hans. Geh zu Albert — er ist im Haus südlich des Platzes. Und rede mit Emma, sie sitzt dort drüben auf der Bank. Viel Glück.",
+          "next": null
+        },
+        "decline": {
+          "speaker": "Der Wirt",
+          "text": "Nimm dir Zeit. Aber nicht zu viel — die Sonne geht unter, und der Graf wartet nicht gern.",
+          "next": null
+        }
+      }
+    },
+    "wirt-waiting": {
+      "nodes": {
+        "start": {
+          "speaker": "Der Wirt",
+          "text": "Hast du schon mit Albert gesprochen? Sein Haus ist im Süden des Platzes. Beeil dich, die Zeit drängt.",
+          "next": null
+        }
+      }
+    },
+    "wirt-opfer": {
+      "nodes": {
+        "start": {
+          "speaker": "Der Wirt",
+          "text": "Es ist passiert... Emma wurde ausgewählt. Der Weg zum Schloss im Norden ist jetzt offen. Geh, Hans. Rette sie.",
+          "next": null
+        }
+      }
+    },
+    "wirt-castle": {
+      "nodes": {
+        "start": {
+          "speaker": "Der Wirt",
+          "text": "Du bist im Schloss gewesen? Pass auf dich auf da drinnen. Der Graf ist... nicht das, was er scheint. Obwohl, eigentlich ist er genau das, was er scheint.",
+          "next": null
+        }
+      }
+    },
+    "wirt-epilog": {
+      "nodes": {
+        "start": {
+          "speaker": "Der Wirt",
+          "text": "Du hast es geschafft, Hans! Das Dorf ist frei. Ich spendiere dir ein Bier — nein, zehn! Du hast dir das verdient.",
+          "next": null
+        }
+      }
+    },
+    "albert-family": {
+      "nodes": {
+        "start": {
+          "speaker": "Bürgermeister Albert",
+          "text": "Hans! Gott sei Dank, du bist da. Ich nehme an, der Wirt hat dir vom Bluttribut erzählt?",
+          "next": "reveal"
+        },
+        "reveal": {
+          "speaker": "Bürgermeister Albert",
+          "text": "Meine Martha... meine Frau... sie war vor Jahren selbst ein Tribut. Sie kam zurück, aber sie war nie mehr dieselbe. Sie hat mir einen Brief hinterlassen, bevor sie... bevor sie gegangen ist.",
+          "next": "list"
+        },
+        "list": {
+          "speaker": "Bürgermeister Albert",
+          "text": "Auf meinem Schreibtisch liegt ihr Brief. Und ich habe eine Knoblauchkette — altes Hausmittel. Nimm sie. Gegen den Grafen wird sie nicht reichen, aber gegen seine Diener...",
+          "next": "give-garlic"
+        },
+        "give-garlic": {
+          "speaker": "Bürgermeister Albert",
+          "text": "Hier, die Knoblauchkette. Martha hat immer gesagt, Knoblauch ist das Erste, was man gegen Vampire braucht. Das Zweite ist Mut. Und das Dritte... nun ja, ein guter Plan.",
+          "giveItem": "knoblauchkette",
+          "setFlag": "visited-mayor",
+          "next": "choice-albert"
+        },
+        "choice-albert": {
+          "type": "choice",
+          "choices": [
+            { "text": "Danke, Albert. Ich werde Emma retten.", "next": "thanks" },
+            { "text": "Gibt es noch etwas, das mir helfen könnte?", "next": "more-help" }
+          ]
+        },
+        "thanks": {
+          "speaker": "Bürgermeister Albert",
+          "text": "Pass auf dich auf, Hans. Und auf Emma. Geh zurück zum Platz — sprich mit Emma und den anderen. Beim Mittsommerfest wird sich alles entscheiden.",
+          "next": null
+        },
+        "more-help": {
+          "speaker": "Bürgermeister Albert",
+          "text": "Ida, meine Haushälterin, kennt alte Geschichten über den Grafen. Und Johann, der Bote, bringt heute die Einladung zum Fest. Vielleicht können sie dir helfen. Und vergiss Marthas Brief nicht!",
+          "next": null
+        }
+      }
+    },
+    "albert-after": {
+      "nodes": {
+        "start": {
+          "speaker": "Bürgermeister Albert",
+          "text": "Hast du mit Emma gesprochen? Und mit Johann? Das Mittsommerfest naht. Geh zurück zum Dorfplatz.",
+          "next": null
+        }
+      }
+    },
+    "albert-opfer": {
+      "nodes": {
+        "start": {
+          "speaker": "Bürgermeister Albert",
+          "text": "Emma... es ist Emma. Ich konnte nichts tun, Hans. Der Graf hat entschieden. Aber du — du kannst noch kämpfen. Geh ins Schloss, bevor es zu spät ist!",
+          "next": null
+        }
+      }
+    },
+    "albert-epilog": {
+      "nodes": {
+        "start": {
+          "speaker": "Bürgermeister Albert",
+          "text": "Hans, du hast das Unmögliche geschafft. Der Bluttribut ist vorbei. Martha wäre stolz auf dich. Ich bin es auf jeden Fall.",
+          "next": null
+        }
+      }
+    },
+    "emma-lisa-bench": {
+      "nodes": {
+        "start": {
+          "speaker": "Emma",
+          "text": "Hans! Da bist du ja. Lisa und ich haben gerade über das Fest gesprochen. Ich habe ein schlechtes Gefühl...",
+          "next": "worry"
+        },
+        "worry": {
+          "speaker": "Emma",
+          "text": "Jedes Jahr nimmt er sich eine von uns. Und dieses Jahr... ich stehe auf der Liste, Hans. Was sollen wir tun?",
+          "next": "choice-emma"
+        },
+        "choice-emma": {
+          "type": "choice",
+          "choices": [
+            { "text": "Ich lasse nicht zu, dass dir etwas passiert.", "next": "promise" },
+            { "text": "Wir finden einen Weg. Zusammen.", "next": "together" },
+            { "text": "Hast du schon mit Albert gesprochen?", "next": "albert-hint" }
+          ]
+        },
+        "promise": {
+          "speaker": "Emma",
+          "text": "Oh Hans... Ich weiß, du meinst es ernst. Aber der Graf ist mächtig. Versprich mir, dass du vorsichtig bist. Geh zu Albert, er weiß vielleicht mehr.",
+          "next": null
+        },
+        "together": {
+          "speaker": "Emma",
+          "text": "Zusammen... ja. Lisa hat auch schon eine Idee. Sprich mit ihr. Und geh zu Albert — er kennt die Geschichte des Grafen besser als jeder andere.",
+          "next": null
+        },
+        "albert-hint": {
+          "speaker": "Emma",
+          "text": "Ja, er hat mir geraten, ruhig zu bleiben. Aber ich sehe ihm an, dass er Angst hat. Geh zu ihm, Hans. Er hat ein Haus im Süden.",
+          "next": null
+        }
+      }
+    },
+    "emma-chosen": {
+      "nodes": {
+        "start": {
+          "speaker": "Emma",
+          "text": "Hans... Johann hat die Nachricht gebracht. Ich bin es. Ich bin die Auserwählte dieses Jahr.",
+          "next": "fear"
+        },
+        "fear": {
+          "speaker": "Emma",
+          "text": "Ich habe solche Angst. Aber... wenn du wirklich gehen willst — das Schloss ist im Norden. Der Weg ist jetzt offen. Bitte, Hans. Sei vorsichtig.",
+          "setFlag": "emma-chosen",
+          "next": null
+        }
+      }
+    },
+    "emma-ceremony": {
+      "nodes": {
+        "start": {
+          "speaker": "Emma",
+          "text": "Hans! Du bist hier! Der Graf kommt bald. Ich bin so froh, dass du da bist. Was auch passiert — danke, dass du für mich gekommen bist.",
+          "next": null
+        }
+      }
+    },
+    "hans-lisa-tip": {
+      "nodes": {
+        "start": {
+          "speaker": "Lisa",
+          "text": "Hans! Gut, dass du da bist. Hör zu — ich habe etwas über den Grafen herausgefunden.",
+          "next": "tip"
+        },
+        "tip": {
+          "speaker": "Lisa",
+          "text": "Meine Großmutter hat erzählt, dass es im Schloss einen Geist gibt. Anastasia, eine ehemalige Grafentochter. Sie soll denen helfen, die reinen Herzens sind. Wenn du ins Schloss gehst, such nach ihr.",
+          "next": "choice-lisa"
+        },
+        "choice-lisa": {
+          "type": "choice",
+          "choices": [
+            { "text": "Ein Geist? Das klingt verrückt.", "next": "crazy" },
+            { "text": "Danke, Lisa. Jeder Hinweis hilft.", "next": "thanks" }
+          ]
+        },
+        "crazy": {
+          "speaker": "Lisa",
+          "text": "Verrückter als ein Vampir-Graf, der jedes Jahr ein Mädchen aussaugt? Glaub mir, such nach Anastasia. Sie ist deine beste Chance.",
+          "next": null
+        },
+        "thanks": {
+          "speaker": "Lisa",
+          "text": "Pass auf Emma auf, Hans. Und auf dich. Wenn du ins Schloss gehst, habe ich noch etwas für dich — komm zu mir, bevor du losgehst.",
+          "next": null
+        }
+      }
+    },
+    "lisa-opferwahl": {
+      "nodes": {
+        "start": {
+          "speaker": "Lisa",
+          "text": "Hans, ich habe es gehört. Emma wurde gewählt. Hier — nimm das. Spritzen und ein Tuch mit Weihwasser. Vampir-Erste-Hilfe, sozusagen.",
+          "giveItem": "spritzen",
+          "next": "advice"
+        },
+        "advice": {
+          "speaker": "Lisa",
+          "text": "Such im Schloss nach Anastasia, dem Geist. Und Hans — die Bibliothek. Dort müssen Bücher sein, die verraten, wie man den Grafen aufhalten kann. Viel Glück!",
+          "next": null
+        }
+      }
+    },
+    "johann-delivery": {
+      "nodes": {
+        "start": {
+          "speaker": "Johann",
+          "text": "Tag, Hans. Ich bin gerade vom Schloss zurück. Habe die Einladungen zum Mittsommerfest verteilt. Scheußliche Arbeit.",
+          "next": "list"
+        },
+        "list": {
+          "speaker": "Johann",
+          "text": "Hier, die Namensliste der möglichen Tribute. Der Graf lässt sie jedes Jahr aufsetzen. Widerlich, aber was soll man machen?",
+          "giveItem": "namensliste",
+          "next": "choice-johann"
+        },
+        "choice-johann": {
+          "type": "choice",
+          "choices": [
+            { "text": "Steht Emma auf der Liste?", "next": "emma-on-list" },
+            { "text": "Hast du den Grafen gesehen?", "next": "graf-seen" }
+          ]
+        },
+        "emma-on-list": {
+          "speaker": "Johann",
+          "text": "Ja... tut mir leid, Hans. Ganz oben sogar. Der Graf hat ein Auge auf sie geworfen. Deswegen sage ich — geh zu Albert. Er hat einen Plan. Zumindest hoffe ich das.",
+          "next": null
+        },
+        "graf-seen": {
+          "speaker": "Johann",
+          "text": "Den Grafen? Nur seinen Schatten. Er empfängt niemanden bei Tag. Aber sein Schloss... kalt, dunkel, und es riecht nach... also, es riecht nicht gut. Geh zu Albert, er weiß mehr.",
+          "next": null
+        }
+      }
+    },
+    "johann-ceremony": {
+      "nodes": {
+        "start": {
+          "speaker": "Johann",
+          "text": "Es ist soweit, Hans. Der Graf hat gewählt — Emma ist der Tribut. Die Tür zum Schloss im Norden steht offen. Möge Gott dir beistehen.",
+          "setFlag": "opferwahl",
+          "next": null
+        }
+      }
+    },
+    "ida-intro": {
+      "nodes": {
+        "start": {
+          "speaker": "Ida",
+          "text": "Oh, du bist der Hans! Albert hat mir von dir erzählt. Ich bin Ida, die Haushälterin. Ich kenne den Grafen seit Jahrzehnten — und ich fürchte ihn genauso lang.",
+          "next": "warning"
+        },
+        "warning": {
+          "speaker": "Ida",
+          "text": "Wenn du ins Schloss gehst, pass auf die Vorhänge auf. Dahinter verstecken sich seine Diener. Und meid den Weinkeller — dort bewahrt er seine... Vorräte auf. Du verstehst.",
+          "next": null
+        }
+      }
+    },
+    "ida-castle-dialogue": {
+      "nodes": {
+        "start": {
+          "speaker": "Ida",
+          "text": "Hans! Wie bist du hier reingekommen? Egal — ich habe mich eingeschlichen, um zu helfen. Der Graf bereitet die Zeremonie im Speisesaal vor. Wir haben nicht viel Zeit.",
+          "next": null
+        }
+      }
+    },
+    "anastasia-intro": {
+      "nodes": {
+        "start": {
+          "speaker": "Anastasia",
+          "text": "...Du kannst mich sehen? Endlich... Ich bin Anastasia. Vor zweihundert Jahren war ich wie Emma — ein Tribut des Grafen.",
+          "next": "story"
+        },
+        "story": {
+          "speaker": "Anastasia",
+          "text": "Er hat mich verwandelt, aber ich habe mich gewehrt. Mein Geist blieb, gefangen in diesen Mauern. Ich habe auf jemanden wie dich gewartet — jemanden mit dem Mut, den Grafen herauszufordern.",
+          "next": "help"
+        },
+        "help": {
+          "speaker": "Anastasia",
+          "text": "In der Bibliothek gibt es ein Buch — 'Blutsaugen für Anfänger'. Klingt komisch, aber darin steht alles, was du brauchst. Und ich habe etwas für dich...",
+          "next": "give-kruzifix"
+        },
+        "give-kruzifix": {
+          "speaker": "Anastasia",
+          "text": "Dieses Kruzifix hat mich vor der völligen Verwandlung bewahrt. Nimm es. Gegen den Grafen wirst du es brauchen.",
+          "giveItem": "kruzifix",
+          "setFlag": "met-anastasia",
+          "setFlag2": "has-kruzifix",
+          "next": "direction"
+        },
+        "direction": {
+          "speaker": "Anastasia",
+          "text": "Geh in die Bibliothek — der Eingang ist vom Speisesaal aus im Westen. Dort finden wir das Buch. Ich werde dort auf dich warten.",
+          "next": null
+        }
+      }
+    },
+    "anastasia-library": {
+      "nodes": {
+        "start": {
+          "speaker": "Anastasia",
+          "text": "Hier bist du. Die Bibliothek... voller Geheimnisse. Das Buch müsste hier irgendwo sein. Lass mich suchen...",
+          "next": "found"
+        },
+        "found": {
+          "speaker": "Anastasia",
+          "text": "Ha! Hier ist es — 'Blutsaugen für Anfänger — Ein Leitfaden für den modernen Vampir'. Kapitel 7: 'Wie man einen Vampirfluch bricht'. Genau was wir brauchen!",
+          "giveItem": "buch-blutsaugen",
+          "setFlag": "book-read",
+          "next": "plan"
+        },
+        "plan": {
+          "speaker": "Anastasia",
+          "text": "Laut dem Buch brauchst du drei Dinge, um den Grafen zu besiegen: Ein Kruzifix — hast du. Knoblauch — hast du hoffentlich auch. Und den Mut, ihm ins Gesicht zu sehen und 'Nein' zu sagen.",
+          "next": "choice-plan"
+        },
+        "choice-plan": {
+          "type": "choice",
+          "choices": [
+            { "text": "Ich bin bereit. Wo finde ich den Grafen?", "next": "ready" },
+            { "text": "Das klingt zu einfach.", "next": "not-easy" }
+          ]
+        },
+        "ready": {
+          "speaker": "Anastasia",
+          "text": "Er wird bei der Zeremonie im Speisesaal erscheinen. Geh zurück und warte dort. Und Hans — egal was passiert, lass dich nicht von seinem Blick fangen. Das ist sein stärkstes Werkzeug.",
+          "setFlag": "ceremony-start",
+          "next": null
+        },
+        "not-easy": {
+          "speaker": "Anastasia",
+          "text": "Einfach? Nichts daran ist einfach. Der Graf ist seit Jahrhunderten unsterblich. Aber jeder Fluch hat eine Schwäche. Seiner ist der freie Wille seiner Opfer. Wenn du und Emma Nein sagt — bricht der Bann.",
+          "setFlag": "ceremony-start",
+          "next": null
+        }
+      }
+    },
+    "anastasia-ready": {
+      "nodes": {
+        "start": {
+          "speaker": "Anastasia",
+          "text": "Der Graf wartet im Speisesaal. Geh, Hans. Es ist Zeit, den Bluttribut zu beenden. Ich werde bei dir sein — auch wenn du mich nicht sehen kannst.",
+          "next": null
+        }
+      }
+    },
+    "rescue-plan": {
+      "nodes": {
+        "start": {
+          "speaker": "Emma",
+          "text": "Hans! Du bist wirklich gekommen! Ich dachte, ich würde dich nie wiedersehen...",
+          "next": "emma-info"
+        },
+        "emma-info": {
+          "speaker": "Emma",
+          "text": "Der Graf hat mich hierher gebracht. Er will die Zeremonie heute Nacht durchführen. Aber es gibt einen Geist hier — Anastasia. Sie hat zu mir gesprochen. Such sie, Hans!",
+          "next": null
+        }
+      }
+    },
+    "book-discovery": {
+      "nodes": {
+        "start": {
+          "speaker": "Lisa",
+          "text": "Hans! Ich bin durch den Geheimgang reingekommen. Hast du das Buch schon gefunden? Anastasia meinte, es sei hier in der Bibliothek.",
+          "next": "search"
+        },
+        "search": {
+          "speaker": "Lisa",
+          "text": "Sprich mit Anastasia, sie kennt sich hier besser aus als ich. Ich halte Wache. Wenn der Graf kommt, warne ich euch.",
+          "next": null
+        }
+      }
+    },
+    "ceremony-final": {
+      "nodes": {
+        "start": {
+          "speaker": "Graf Harras",
+          "text": "Ahhh... der Verlobte. Wie rührend. Du bist gekommen, um deine Emma zu retten? Wie... vorhersehbar.",
+          "next": "monolog"
+        },
+        "monolog": {
+          "speaker": "Graf Harras",
+          "text": "Zweihundert Jahre lang habe ich dieses Dorf genährt — und im Gegenzug nehme ich mir nur eine kleine... Erfrischung pro Jahr. Ein fairer Handel, findest du nicht?",
+          "next": "choice-final"
+        },
+        "choice-final": {
+          "type": "choice",
+          "choices": [
+            { "text": "Das Kruzifix gegen den Grafen erheben!", "next": "ending-best-check", "requiredFlag": "has-kruzifix" },
+            { "text": "Mit dem Buch die Bannformel sprechen!", "next": "ending-good-check", "requiredFlag": "book-read" },
+            { "text": "Den Grafen angreifen!", "next": "ending-bad" },
+            { "text": "Versuchen zu verhandeln.", "next": "ending-bad" }
+          ]
+        },
+        "ending-best-check": {
+          "speaker": "Erzähler",
+          "text": "Du hebst das Kruzifix. Ein gleißendes Licht erfüllt den Saal. Graf Harras weicht zurück, sein Gesicht verzerrt sich vor Schmerz.",
+          "next": "ending-best-2"
+        },
+        "ending-best-2": {
+          "speaker": "Graf Harras",
+          "text": "NEIN! Das Kreuz... Anastasias Kreuz! Das ist unmöglich!",
+          "next": "ending-best-3"
+        },
+        "ending-best-3": {
+          "speaker": "Anastasia",
+          "text": "Es ist vorbei, Harras. Zweihundert Jahre sind genug. Der Bann ist gebrochen — für mich und für das Dorf.",
+          "next": "ending-best-final"
+        },
+        "ending-best-final": {
+          "speaker": "Erzähler",
+          "text": "Das Licht des Kruzifixes durchflutet das Schloss. Graf Harras zerfällt zu Staub. Anastasias Geist lächelt ein letztes Mal, bevor er im Licht verschwindet. Emma fällt dir in die Arme. Der Bluttribut ist beendet — für immer.",
+          "setFlag": "bluttribut-complete",
+          "next": "epilog"
+        },
+        "ending-good-check": {
+          "speaker": "Erzähler",
+          "text": "Du schlägst das Buch auf und sprichst die alte Bannformel. Die Worte hallen durch den Saal, und der Graf erstarrt.",
+          "next": "ending-good-2"
+        },
+        "ending-good-2": {
+          "speaker": "Graf Harras",
+          "text": "Was... was tust du? Diese Worte... woher hast du dieses Buch?!",
+          "next": "ending-good-3"
+        },
+        "ending-good-3": {
+          "speaker": "Erzähler",
+          "text": "Der Bann des Grafen wird geschwächt. Er kann nicht mehr über das Dorf herrschen. Doch er lebt weiter — geschwächt, gebrochen, aber unsterblich. Er flieht in die Nacht. Der Bluttribut endet, aber der Graf wandelt noch.",
+          "setFlag": "bluttribut-complete",
+          "next": "epilog"
+        },
+        "ending-bad": {
+          "speaker": "Erzähler",
+          "text": "Du stürzt dich auf den Grafen — doch er ist schneller. Mit einer Handbewegung wirft er dich zurück. Sein Blick trifft dich, und für einen Moment erstarrst du.",
+          "next": "ending-bad-2"
+        },
+        "ending-bad-2": {
+          "speaker": "Graf Harras",
+          "text": "Mutig, aber dumm. Ich werde Emma heute Nacht verschonen — als Dank für deine Unterhaltung. Dafür wirst DU der Tribut sein, Hans.",
+          "next": "ending-bad-3"
+        },
+        "ending-bad-3": {
+          "speaker": "Erzähler",
+          "text": "Der Graf verschont Emma, doch Hans trägt nun die Male am Hals. Der Bluttribut geht weiter — aber Emma ist frei. Ein bittersüßer Preis für den Mut eines jungen Mannes.",
+          "setFlag": "bluttribut-complete",
+          "next": "epilog"
+        },
+        "epilog": {
+          "speaker": "Erzähler",
+          "text": "Die Morgensonne bricht über Krähenfels herein. Was auch immer geschah — diese Nacht wird niemand vergessen. Vorhang. Applaus. Zurück ins Theater...",
+          "next": null
+        }
+      }
+    },
+    "graf-defeated": {
+      "nodes": {
+        "start": {
+          "speaker": "Erzähler",
+          "text": "Hier, wo einst der Graf Harras saß, liegt nur noch Staub. Der Bluttribut ist Geschichte.",
+          "next": null
+        }
+      }
+    }
+  }
+}

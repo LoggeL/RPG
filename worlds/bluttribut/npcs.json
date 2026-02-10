@@ -1,0 +1,143 @@
+{
+  "npcs": {
+    "wirt": {
+      "id": "wirt",
+      "name": "Der Wirt",
+      "sprite": "🍺",
+      "spriteSVG": "<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewBox='0 0 40 48'><rect x='10' y='18' width='20' height='24' fill='#3a2818' rx='3'/><path d='M8 20 L6 44 L20 42 L34 44 L32 20 Z' fill='#4a3018' opacity='0.85'/><circle cx='20' cy='12' r='7' fill='#e8c8a0'/><path d='M13 10 Q13 5 20 4 Q27 5 27 10' fill='#5a3820'/><rect x='13' y='4' width='14' height='4' fill='#5a3820' rx='1'/><circle cx='17.5' cy='11.5' r='1.1' fill='#222'/><circle cx='22.5' cy='11.5' r='1.1' fill='#222'/><path d='M16 15 Q20 17 24 15' fill='none' stroke='#aa8870' stroke-width='0.6'/><rect x='28' y='24' width='8' height='12' fill='#d4923a' opacity='0.4' rx='2'/><rect x='30' y='22' width='4' height='2' fill='#d4923a' opacity='0.3'/><rect x='10' y='42' width='7' height='5' fill='#2a1a0e' rx='1'/><rect x='23' y='42' width='7' height='5' fill='#2a1a0e' rx='1'/></svg>",
+      "position": { "x": 50, "y": 50 },
+      "dialogue": "wirt-intro",
+      "dialogueConditions": [
+        { "flag": "bluttribut-complete", "dialogue": "wirt-epilog" },
+        { "flag": "entered-castle", "dialogue": "wirt-castle" },
+        { "flag": "opferwahl", "dialogue": "wirt-opfer" },
+        { "flag": "quest-accepted", "dialogue": "wirt-waiting" }
+      ]
+    },
+    "albert": {
+      "id": "albert",
+      "name": "Bürgermeister Albert",
+      "sprite": "🎩",
+      "spriteSVG": "<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewBox='0 0 40 48'><rect x='12' y='20' width='16' height='20' fill='#1a1040' rx='2'/><path d='M8 22 L6 44 L20 42 L34 44 L32 22 Z' fill='#2a1828' opacity='0.85'/><circle cx='20' cy='14' r='7' fill='#e8c8a0'/><path d='M13 12 Q13 6 20 5 Q27 6 27 12' fill='#2a2a2a'/><rect x='11' y='4' width='18' height='4' fill='#2a2a2a' rx='1'/><rect x='14' y='1' width='12' height='5' fill='#2a2a2a' rx='1'/><circle cx='17.5' cy='13.5' r='1.1' fill='#222'/><circle cx='22.5' cy='13.5' r='1.1' fill='#222'/><path d='M17 17 Q20 18.5 23 17' fill='none' stroke='#aa8870' stroke-width='0.5'/><rect x='18' y='21' width='4' height='6' fill='#d4923a' opacity='0.4' rx='0.5'/><circle cx='20' cy='22' r='1.5' fill='#d4923a' opacity='0.5'/><rect x='12' y='42' width='6' height='5' fill='#1a1008' rx='1'/><rect x='22' y='42' width='6' height='5' fill='#1a1008' rx='1'/></svg>",
+      "position": { "x": 50, "y": 50 },
+      "dialogue": "albert-family",
+      "dialogueConditions": [
+        { "flag": "bluttribut-complete", "dialogue": "albert-epilog" },
+        { "flag": "opferwahl", "dialogue": "albert-opfer" },
+        { "flag": "visited-mayor", "dialogue": "albert-after" }
+      ]
+    },
+    "emma": {
+      "id": "emma",
+      "name": "Emma",
+      "sprite": "👩",
+      "spriteSVG": "<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewBox='0 0 40 48'><path d='M10 22 L8 44 L20 42 L32 44 L30 22 Z' fill='#6a1020' opacity='0.85'/><rect x='13' y='20' width='14' height='20' fill='#7a1828' rx='2'/><circle cx='20' cy='13' r='7' fill='#e8c8a0'/><path d='M12 11 Q12 4 20 3 Q28 4 28 11 L28 16 Q24 14 20 16 Q16 14 12 16 Z' fill='#5a2810'/><circle cx='17.5' cy='12.5' r='1.1' fill='#2a4020'/><circle cx='22.5' cy='12.5' r='1.1' fill='#2a4020'/><path d='M17 16 Q20 17.5 23 16' fill='none' stroke='#c09880' stroke-width='0.5'/><circle cx='20' cy='21' r='1' fill='#d4923a' opacity='0.5'/><rect x='13' y='42' width='5' height='4' fill='#3a2010' rx='1'/><rect x='22' y='42' width='5' height='4' fill='#3a2010' rx='1'/></svg>",
+      "position": { "x": 50, "y": 50 },
+      "dialogue": "emma-lisa-bench",
+      "hiddenIf": "entered-castle",
+      "dialogueConditions": [
+        { "flag": "visited-mayor", "dialogue": "emma-chosen" }
+      ]
+    },
+    "emma-castle": {
+      "id": "emma-castle",
+      "name": "Emma",
+      "sprite": "👩",
+      "spriteSVG": "<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewBox='0 0 40 48'><path d='M10 22 L8 44 L20 42 L32 44 L30 22 Z' fill='#4a0e18' opacity='0.85'/><rect x='13' y='20' width='14' height='20' fill='#5a1020' rx='2'/><circle cx='20' cy='13' r='7' fill='#d8b890'/><path d='M12 11 Q12 4 20 3 Q28 4 28 11 L28 16 Q24 14 20 16 Q16 14 12 16 Z' fill='#5a2810'/><circle cx='17.5' cy='12.5' r='1.1' fill='#2a4020'/><circle cx='22.5' cy='12.5' r='1.1' fill='#2a4020'/><path d='M18 16 Q20 17 22 16' fill='none' stroke='#b08870' stroke-width='0.5'/><circle cx='20' cy='21' r='1' fill='#d4923a' opacity='0.3'/><rect x='13' y='42' width='5' height='4' fill='#2a1008' rx='1'/><rect x='22' y='42' width='5' height='4' fill='#2a1008' rx='1'/></svg>",
+      "position": { "x": 50, "y": 50 },
+      "visibleIf": "entered-castle",
+      "dialogue": "rescue-plan",
+      "dialogueConditions": [
+        { "flag": "ceremony-start", "dialogue": "emma-ceremony" }
+      ]
+    },
+    "lisa": {
+      "id": "lisa",
+      "name": "Lisa",
+      "sprite": "👧",
+      "spriteSVG": "<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewBox='0 0 40 48'><path d='M10 22 L8 44 L20 42 L32 44 L30 22 Z' fill='#1a4a28' opacity='0.85'/><rect x='13' y='20' width='14' height='20' fill='#2a5a38' rx='2'/><circle cx='20' cy='13' r='7' fill='#e8c8a0'/><path d='M12 11 Q12 5 20 4 Q28 5 28 11 L26 18 L14 18 Z' fill='#d4923a'/><circle cx='17.5' cy='12.5' r='1.1' fill='#222'/><circle cx='22.5' cy='12.5' r='1.1' fill='#222'/><path d='M17 16 Q20 17.5 23 16' fill='none' stroke='#aa8870' stroke-width='0.5'/><rect x='13' y='42' width='5' height='4' fill='#2a1a0e' rx='1'/><rect x='22' y='42' width='5' height='4' fill='#2a1a0e' rx='1'/></svg>",
+      "position": { "x": 50, "y": 50 },
+      "dialogue": "hans-lisa-tip",
+      "hiddenIf": "entered-castle",
+      "dialogueConditions": [
+        { "flag": "visited-mayor", "dialogue": "lisa-opferwahl" }
+      ]
+    },
+    "lisa-castle": {
+      "id": "lisa-castle",
+      "name": "Lisa",
+      "sprite": "👧",
+      "spriteSVG": "<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewBox='0 0 40 48'><path d='M10 22 L8 44 L20 42 L32 44 L30 22 Z' fill='#1a3a20' opacity='0.85'/><rect x='13' y='20' width='14' height='20' fill='#2a4a30' rx='2'/><circle cx='20' cy='13' r='7' fill='#e8c8a0'/><path d='M12 11 Q12 5 20 4 Q28 5 28 11 L26 18 L14 18 Z' fill='#d4923a'/><circle cx='17.5' cy='12.5' r='1.1' fill='#222'/><circle cx='22.5' cy='12.5' r='1.1' fill='#222'/><path d='M17 16 Q20 17.5 23 16' fill='none' stroke='#aa8870' stroke-width='0.5'/><rect x='13' y='42' width='5' height='4' fill='#2a1a0e' rx='1'/><rect x='22' y='42' width='5' height='4' fill='#2a1a0e' rx='1'/></svg>",
+      "position": { "x": 50, "y": 50 },
+      "visibleIf": "entered-castle",
+      "dialogue": "book-discovery",
+      "dialogueConditions": []
+    },
+    "ida": {
+      "id": "ida",
+      "name": "Ida",
+      "sprite": "👵",
+      "spriteSVG": "<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewBox='0 0 40 48'><path d='M10 22 L8 44 L20 42 L32 44 L30 22 Z' fill='#3a2a4a' opacity='0.85'/><rect x='13' y='20' width='14' height='20' fill='#4a3a5a' rx='2'/><circle cx='20' cy='13' r='7' fill='#e0c0a0'/><path d='M12 11 Q12 5 20 4 Q28 5 28 11' fill='#8a8a8a'/><rect x='12' y='5' width='16' height='3' fill='#8a8a8a' rx='1'/><circle cx='17.5' cy='12.5' r='1.1' fill='#222'/><circle cx='22.5' cy='12.5' r='1.1' fill='#222'/><path d='M17 16 Q20 17 23 16' fill='none' stroke='#a08870' stroke-width='0.5'/><rect x='13' y='42' width='5' height='4' fill='#2a1a0e' rx='1'/><rect x='22' y='42' width='5' height='4' fill='#2a1a0e' rx='1'/></svg>",
+      "position": { "x": 50, "y": 50 },
+      "dialogue": "ida-intro",
+      "hiddenIf": "entered-castle",
+      "dialogueConditions": []
+    },
+    "ida-castle": {
+      "id": "ida-castle",
+      "name": "Ida",
+      "sprite": "👵",
+      "spriteSVG": "<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewBox='0 0 40 48'><path d='M10 22 L8 44 L20 42 L32 44 L30 22 Z' fill='#3a2a4a' opacity='0.85'/><rect x='13' y='20' width='14' height='20' fill='#4a3a5a' rx='2'/><circle cx='20' cy='13' r='7' fill='#e0c0a0'/><path d='M12 11 Q12 5 20 4 Q28 5 28 11' fill='#8a8a8a'/><rect x='12' y='5' width='16' height='3' fill='#8a8a8a' rx='1'/><circle cx='17.5' cy='12.5' r='1.1' fill='#222'/><circle cx='22.5' cy='12.5' r='1.1' fill='#222'/><path d='M17 16 Q20 17 23 16' fill='none' stroke='#a08870' stroke-width='0.5'/><rect x='13' y='42' width='5' height='4' fill='#2a1a0e' rx='1'/><rect x='22' y='42' width='5' height='4' fill='#2a1a0e' rx='1'/></svg>",
+      "position": { "x": 50, "y": 50 },
+      "visibleIf": "entered-castle",
+      "dialogue": "ida-castle-dialogue",
+      "dialogueConditions": []
+    },
+    "johann": {
+      "id": "johann",
+      "name": "Johann",
+      "sprite": "🧑‍🌾",
+      "spriteSVG": "<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewBox='0 0 40 48'><rect x='12' y='20' width='16' height='20' fill='#4a4a2a' rx='2'/><path d='M8 22 L6 44 L20 42 L34 44 L32 22 Z' fill='#3a3a1a' opacity='0.85'/><circle cx='20' cy='13' r='7' fill='#d8b890'/><path d='M12 11 Q12 5 20 4 Q28 5 28 11' fill='#6a4a20'/><rect x='10' y='5' width='20' height='4' fill='#6a4a20' rx='1'/><rect x='8' y='7' width='24' height='2' fill='#7a5a28' rx='1'/><circle cx='17.5' cy='12.5' r='1.1' fill='#222'/><circle cx='22.5' cy='12.5' r='1.1' fill='#222'/><path d='M17 16 Q20 17.5 23 16' fill='none' stroke='#a08870' stroke-width='0.5'/><rect x='12' y='42' width='6' height='5' fill='#3a2a10' rx='1'/><rect x='22' y='42' width='6' height='5' fill='#3a2a10' rx='1'/></svg>",
+      "position": { "x": 50, "y": 50 },
+      "dialogue": "johann-delivery",
+      "dialogueConditions": [
+        { "flag": "visited-mayor", "dialogue": "johann-ceremony" }
+      ]
+    },
+    "graf-harras": {
+      "id": "graf-harras",
+      "name": "Graf Harras",
+      "sprite": "🧛",
+      "spriteSVG": "<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewBox='0 0 40 48'><path d='M6 18 L2 46 L20 44 L38 46 L34 18 Z' fill='#0a0414' opacity='0.9'/><path d='M6 18 L2 46 L20 44 L38 46 L34 18 Z' fill='none' stroke='#6a1020' stroke-width='0.5'/><rect x='12' y='18' width='16' height='22' fill='#1a0a20' rx='2'/><circle cx='20' cy='11' r='7' fill='#d0b0a0'/><path d='M13 9 Q13 3 20 2 Q27 3 27 9' fill='#0a0414'/><rect x='13' y='3' width='14' height='4' fill='#0a0414' rx='1'/><circle cx='17.5' cy='10.5' r='1.2' fill='#6a1020'/><circle cx='22.5' cy='10.5' r='1.2' fill='#6a1020'/><path d='M16 14 L18 16 L20 14 L22 16 L24 14' fill='none' stroke='#6a1020' stroke-width='0.6'/><circle cx='20' cy='19' r='2' fill='#6a1020' opacity='0.6'/><rect x='17' y='19' width='6' height='2' fill='#d4923a' opacity='0.4'/><rect x='12' y='40' width='6' height='5' fill='#0a0414' rx='1'/><rect x='22' y='40' width='6' height='5' fill='#0a0414' rx='1'/></svg>",
+      "position": { "x": 50, "y": 50 },
+      "visibleIf": "ceremony-start",
+      "dialogue": "ceremony-final",
+      "dialogueConditions": [
+        { "flag": "bluttribut-complete", "dialogue": "graf-defeated" }
+      ]
+    },
+    "anastasia": {
+      "id": "anastasia",
+      "name": "Anastasia",
+      "sprite": "👻",
+      "spriteSVG": "<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewBox='0 0 40 48'><path d='M10 20 L8 44 Q14 48 20 44 Q26 48 32 44 L30 20 Z' fill='#c0c8e0' opacity='0.4'/><rect x='13' y='18' width='14' height='20' fill='#d0d8f0' opacity='0.3' rx='2'/><circle cx='20' cy='12' r='7' fill='#d8e0f0' opacity='0.5'/><path d='M12 10 Q12 4 20 3 Q28 4 28 10 L26 14 L14 14 Z' fill='#e0e8ff' opacity='0.3'/><circle cx='17.5' cy='11.5' r='1.2' fill='#4060a0' opacity='0.6'/><circle cx='22.5' cy='11.5' r='1.2' fill='#4060a0' opacity='0.6'/><path d='M17 15 Q20 16.5 23 15' fill='none' stroke='#8090b0' stroke-width='0.5' opacity='0.5'/><circle cx='20' cy='19' r='1.5' fill='#8090c0' opacity='0.3'/><ellipse cx='20' cy='30' rx='14' ry='3' fill='#c0c8e0' opacity='0.1'/></svg>",
+      "position": { "x": 50, "y": 50 },
+      "visibleIf": "entered-castle",
+      "hiddenIf": "met-anastasia",
+      "dialogue": "anastasia-intro",
+      "dialogueConditions": []
+    },
+    "anastasia-library": {
+      "id": "anastasia-library",
+      "name": "Anastasia",
+      "sprite": "👻",
+      "spriteSVG": "<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewBox='0 0 40 48'><path d='M10 20 L8 44 Q14 48 20 44 Q26 48 32 44 L30 20 Z' fill='#c0c8e0' opacity='0.4'/><rect x='13' y='18' width='14' height='20' fill='#d0d8f0' opacity='0.3' rx='2'/><circle cx='20' cy='12' r='7' fill='#d8e0f0' opacity='0.5'/><path d='M12 10 Q12 4 20 3 Q28 4 28 10 L26 14 L14 14 Z' fill='#e0e8ff' opacity='0.3'/><circle cx='17.5' cy='11.5' r='1.2' fill='#4060a0' opacity='0.6'/><circle cx='22.5' cy='11.5' r='1.2' fill='#4060a0' opacity='0.6'/><path d='M17 15 Q20 16.5 23 15' fill='none' stroke='#8090b0' stroke-width='0.5' opacity='0.5'/><circle cx='20' cy='19' r='1.5' fill='#8090c0' opacity='0.3'/><ellipse cx='20' cy='30' rx='14' ry='3' fill='#c0c8e0' opacity='0.1'/></svg>",
+      "position": { "x": 50, "y": 50 },
+      "visibleIf": "met-anastasia",
+      "dialogue": "anastasia-library",
+      "dialogueConditions": [
+        { "flag": "book-read", "dialogue": "anastasia-ready" }
+      ]
+    }
+  }
+}

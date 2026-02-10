@@ -129,7 +129,59 @@
         },
         "celebrate": {
           "speaker": "Sebastian",
-          "text": "Zwei Welten gerettet... Das Theater wird stärker mit jeder Mission. Bald werden weitere Türen erscheinen. Ruh dich aus — du hast es verdient.",
+          "text": "Zwei Welten gerettet... und sieh nur! An der Ostwand — eine weitere Tür! Sie riecht nach... Knoblauch? Und altem Wein?",
+          "next": "bluttribut-choice"
+        },
+        "bluttribut-choice": {
+          "type": "choice",
+          "choices": [
+            { "text": "Was ist dahinter?", "next": "bluttribut-explain" },
+            { "text": "Ich gehe direkt hinein.", "next": "bluttribut-unlock", "setFlag": "bluttribut-unlocked" }
+          ]
+        },
+        "bluttribut-explain": {
+          "speaker": "Sebastian",
+          "text": "Bluttribut — eine Schauerkomödie! Ein verschlafenes Dorf, ein finsterer Graf, und ein junger Mann, der seine Verlobte retten muss. Klassisches Theater... mit Vampiren.",
+          "next": "bluttribut-choice-2"
+        },
+        "bluttribut-choice-2": {
+          "type": "choice",
+          "choices": [
+            { "text": "Vampire? Das klingt spannend!", "next": "bluttribut-unlock", "setFlag": "bluttribut-unlocked" },
+            { "text": "Vielleicht später.", "next": "bluttribut-later" }
+          ]
+        },
+        "bluttribut-unlock": {
+          "speaker": "Sebastian",
+          "text": "Viel Glück! Das Portal an der Ostwand ist jetzt offen. Und Hans — äh, so heißt die Hauptfigur — pass auf, dass du nicht gebissen wirst!",
+          "next": null
+        },
+        "bluttribut-later": {
+          "speaker": "Sebastian",
+          "text": "Verständlich. Die Tür wartet. Komm zu mir, wenn du bereit für ein wenig... Blutsaugerei bist.",
+          "next": null
+        }
+      }
+    },
+    "sebastian-bluttribut-waiting": {
+      "nodes": {
+        "start": {
+          "speaker": "Sebastian",
+          "text": "Das Bluttribut-Portal an der Ostwand wartet auf dich! Ein Dorf voller Geheimnisse, ein Vampir-Graf, und eine Verlobte in Gefahr. Was will man mehr?",
+          "next": null
+        }
+      }
+    },
+    "sebastian-bluttribut-done": {
+      "nodes": {
+        "start": {
+          "speaker": "Sebastian",
+          "text": "Drei Welten gerettet! Das Theater erstrahlt in neuem Glanz. Du bist der größte Held, den diese Bühne je gesehen hat!",
+          "next": "finale"
+        },
+        "finale": {
+          "speaker": "Sebastian",
+          "text": "Der Bluttribut ist beendet, das Signal verstummt, die Maske gefunden. Bravo! Stehende Ovationen! ...Bald werden weitere Stücke erwachen. Aber für jetzt — genieße den Applaus.",
           "next": null
         }
       }

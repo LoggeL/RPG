@@ -8,6 +8,8 @@
       "position": { "x": 50, "y": 50 },
       "dialogue": "sebastian-intro",
       "dialogueConditions": [
+        { "flag": "bluttribut-complete", "dialogue": "sebastian-bluttribut-done" },
+        { "flag": "bluttribut-unlocked", "dialogue": "sebastian-bluttribut-waiting" },
         { "flag": "nexus-complete", "dialogue": "sebastian-nexus-done" },
         { "flag": "nexus-unlocked", "dialogue": "sebastian-nexus-waiting" },
         { "flag": "placeholder-complete", "dialogue": "sebastian-happy" },

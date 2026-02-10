@@ -1,0 +1,54 @@
+{
+  "items": {
+    "kruzifix": {
+      "id": "kruzifix",
+      "name": "Kruzifix",
+      "description": "Ein altes silbernes Kruzifix. Es fühlt sich seltsam warm an und scheint in der Dunkelheit schwach zu leuchten.",
+      "type": "quest",
+      "sprite": "✝️"
+    },
+    "buch-blutsaugen": {
+      "id": "buch-blutsaugen",
+      "name": "Blutsaugen für Anfänger",
+      "description": "Ein staubiges Buch mit dem Titel 'Blutsaugen für Anfänger — Ein Leitfaden für den modernen Vampir'. Erstaunlich informativ.",
+      "type": "quest",
+      "sprite": "📕"
+    },
+    "knoblauchkette": {
+      "id": "knoblauchkette",
+      "name": "Knoblauchkette",
+      "description": "Eine Kette aus frischem Knoblauch. Der Geruch ist... intensiv. Aber gegen Vampire soll es helfen.",
+      "type": "quest",
+      "sprite": "🧄"
+    },
+    "spritzen": {
+      "id": "spritzen",
+      "name": "Spritzen & Tuch",
+      "description": "Ein Set aus einer großen Spritze und einem Tuch, getränkt in Weihwasser. Lisas Idee einer 'Vampir-Erste-Hilfe'.",
+      "type": "quest",
+      "sprite": "💉"
+    },
+    "blumen": {
+      "id": "blumen",
+      "name": "Blumenstrauß",
+      "description": "Ein hübscher Strauß Feldblumen. Vielleicht kann man damit jemandem eine Freude machen.",
+      "type": "optional",
+      "sprite": "💐"
+    },
+    "brief": {
+      "id": "brief",
+      "name": "Brief von Martha",
+      "description": "Ein versiegelter Brief von Alberts verstorbener Frau Martha. Die Tinte ist verblasst, aber die Worte sind noch lesbar.",
+      "type": "quest",
+      "sprite": "✉️",
+      "setFlagOnPickup": "has-brief"
+    },
+    "namensliste": {
+      "id": "namensliste",
+      "name": "Namensliste",
+      "description": "Eine Liste mit den Namen aller bisherigen 'Tribute' an den Grafen. Die letzte Eintragung ist leer — noch.",
+      "type": "quest",
+      "sprite": "📜"
+    }
+  }
+}

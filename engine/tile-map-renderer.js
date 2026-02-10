@@ -399,7 +399,11 @@ export const TileMapRenderer = {
       || tileId === 'bar-counter' || tileId === 'booth-seat' || tileId === 'workbench'
       || tileId === 'screen-wall' || tileId === 'server-rack' || tileId === 'crate-metal'
       || tileId === 'rubble-pile' || tileId === 'rust-beam' || tileId === 'vehicle-wreck'
-      || tileId === 'tower-base' || tileId === 'tower-antenna' || tileId === 'console-panel';
+      || tileId === 'tower-base' || tileId === 'tower-antenna' || tileId === 'console-panel'
+      || tileId === 'bench-wood' || tileId === 'market-stand' || tileId === 'table-wood'
+      || tileId === 'stove' || tileId === 'wardrobe' || tileId === 'bed-canopy'
+      || tileId === 'bookshelf' || tileId === 'desk-wood' || tileId === 'staircase'
+      || tileId === 'painting-frame';
   },
 
   _createDefaultPlayerSVG() {
