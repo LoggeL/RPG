@@ -1,0 +1,18 @@
+{
+  "quests": {
+    "placeholder-master": {
+      "id": "placeholder-master",
+      "name": "Das verlorene Requisit",
+      "description": "Finde die Goldene Theatermaske im vergessenen Proberaum und bringe sie zu Sebastian.",
+      "stages": [
+        { "id": "find-mask", "description": "Finde die Goldene Theatermaske", "type": "fetch", "targetItem": "golden-mask" },
+        { "id": "return-mask", "description": "Bringe die Maske zu Sebastian", "type": "dialogue", "targetNpc": "sebastian", "turnInItem": "golden-mask" }
+      ],
+      "rewards": {
+        "flags": ["placeholder-complete"],
+        "items": []
+      },
+      "isMasterQuest": true
+    }
+  }
+}

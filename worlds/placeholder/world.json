@@ -1,0 +1,230 @@
+{
+  "id": "placeholder",
+  "name": "Das vergessene Stück",
+  "entryRoom": "entrance",
+  "theme": {
+    "primaryColor": "#0f1520",
+    "accentColor": "#6a9fd8"
+  },
+  "rooms": {
+    "entrance": {
+      "name": "Eingang",
+      "description": "Ein staubiger Korridor. Verblichene Plakate an den Wänden zeigen Szenen eines längst vergessenen Stücks.",
+      "backgroundCSS": "radial-gradient(ellipse at 50% 40%, #1a2030 0%, #0f1520 50%, #080c14 100%)",
+      "exits": {
+        "north": { "roomId": "rehearsal-room", "label": "Proberaum" },
+        "south": { "roomId": "lobby:main-hall", "label": "Zurück zur Lobby" }
+      },
+      "npcs": ["stage-technician"],
+      "items": [],
+      "map": {
+        "width": 16,
+        "height": 12,
+        "theme": "theater-backstage",
+        "playerSpawn": { "x": 8, "y": 10 },
+        "layers": {
+          "ground": [
+            "wwwwwwwwDwwwwwww",
+            "wddddddddddddddw",
+            "wddddddddddddddw",
+            "wddddddddddddddw",
+            "wddddddddddddddw",
+            "wddddddddddddddw",
+            "wddddddddddddddw",
+            "wddddddddddddddw",
+            "wddddddddddddddw",
+            "wddddddddddddddw",
+            "wddddddddddddddw",
+            "wwwwwwwwDwwwwwww"
+          ],
+          "objects": [
+            "................",
+            "..P..........P..",
+            "................",
+            "................",
+            "................",
+            "................",
+            "................",
+            "................",
+            "................",
+            "..P..........P..",
+            "................",
+            "................"
+          ]
+        },
+        "legend": {
+          "w": "wall-blue",
+          "d": "dusty-floor",
+          "D": "door-blue",
+          "P": "poster",
+          ".": null
+        },
+        "exits": [
+          {
+            "tiles": [[8, 0]],
+            "target": "rehearsal-room",
+            "label": "Proberaum",
+            "spawnAt": { "x": 8, "y": 10 }
+          },
+          {
+            "tiles": [[8, 11]],
+            "target": "lobby:main-hall",
+            "label": "Zurück zur Lobby",
+            "spawnAt": { "x": 10, "y": 1 }
+          }
+        ],
+        "entities": {
+          "npcs": {
+            "stage-technician": { "x": 10, "y": 5 }
+          },
+          "items": {}
+        }
+      }
+    },
+    "rehearsal-room": {
+      "name": "Proberaum",
+      "description": "Ein großer, dunkler Raum mit einem ramponierten Klavier in der Ecke. Notenblätter liegen verstreut.",
+      "backgroundCSS": "radial-gradient(ellipse at 30% 50%, #1f1a2a 0%, #141020 50%, #0a0810 100%)",
+      "exits": {
+        "south": { "roomId": "entrance", "label": "Zurück zum Eingang" },
+        "east": { "roomId": "prop-room", "label": "Requisitenraum", "locked": true, "requiredFlag": "prop-room-key" }
+      },
+      "npcs": [],
+      "items": ["rusty-key"],
+      "map": {
+        "width": 16,
+        "height": 12,
+        "theme": "theater-backstage",
+        "playerSpawn": { "x": 8, "y": 10 },
+        "layers": {
+          "ground": [
+            "wwwwwwwwwwwwwwww",
+            "wddddddddddddddw",
+            "wddddddddddddddw",
+            "wddddddddddddddw",
+            "wddddddddddddddw",
+            "wddddddddddddddE",
+            "wddddddddddddddw",
+            "wddddddddddddddw",
+            "wddddddddddddddw",
+            "wddddddddddddddw",
+            "wddddddddddddddw",
+            "wwwwwwwwDwwwwwwww"
+          ],
+          "objects": [
+            "................",
+            "..p.............",
+            "..m.............",
+            "................",
+            "............W...",
+            "................",
+            "............W...",
+            "..c.............",
+            "................",
+            "................",
+            "................",
+            "................"
+          ]
+        },
+        "legend": {
+          "w": "wall-blue",
+          "d": "dusty-floor",
+          "D": "door-blue",
+          "E": "door-locked",
+          "p": "old-piano",
+          "m": "sheet-music",
+          "c": "cobweb",
+          "W": "shelf",
+          ".": null
+        },
+        "exits": [
+          {
+            "tiles": [[8, 11]],
+            "target": "entrance",
+            "label": "Zurück zum Eingang",
+            "spawnAt": { "x": 8, "y": 1 }
+          },
+          {
+            "tiles": [[15, 5]],
+            "target": "prop-room",
+            "label": "Requisitenraum",
+            "locked": true,
+            "requiredFlag": "prop-room-key",
+            "spawnAt": { "x": 2, "y": 5 }
+          }
+        ],
+        "entities": {
+          "npcs": {},
+          "items": {
+            "rusty-key": { "x": 7, "y": 5 }
+          }
+        }
+      }
+    },
+    "prop-room": {
+      "name": "Requisitenraum",
+      "description": "Regale voller verstaubter Requisiten. Und dort, auf einem Samtpolster, liegt die Goldene Theatermaske.",
+      "backgroundCSS": "radial-gradient(ellipse at 60% 40%, #2a1f10 0%, #1a1508 50%, #0d0a04 100%)",
+      "exits": {
+        "west": { "roomId": "rehearsal-room", "label": "Zurück zum Proberaum" }
+      },
+      "npcs": [],
+      "items": ["golden-mask"],
+      "map": {
+        "width": 14,
+        "height": 10,
+        "theme": "theater-backstage",
+        "playerSpawn": { "x": 2, "y": 5 },
+        "layers": {
+          "ground": [
+            "wwwwwwwwwwwwww",
+            "wddddddddddddw",
+            "wddddddddddddw",
+            "wddddddddddddw",
+            "wddddddddddddw",
+            "Eddddddddddddw",
+            "wddddddddddddw",
+            "wddddddddddddw",
+            "wddddddddddddw",
+            "wwwwwwwwwwwwww"
+          ],
+          "objects": [
+            "..............",
+            "..S........S..",
+            "..............",
+            ".......CP.....",
+            "..............",
+            "..............",
+            "..............",
+            "..S........S..",
+            "..............",
+            ".............."
+          ]
+        },
+        "legend": {
+          "w": "wall",
+          "d": "dusty-floor",
+          "E": "door-blue",
+          "S": "shelf",
+          "C": "curtain-prop",
+          "P": "crate",
+          ".": null
+        },
+        "exits": [
+          {
+            "tiles": [[0, 5]],
+            "target": "rehearsal-room",
+            "label": "Zurück zum Proberaum",
+            "spawnAt": { "x": 14, "y": 5 }
+          }
+        ],
+        "entities": {
+          "npcs": {},
+          "items": {
+            "golden-mask": { "x": 7, "y": 4 }
+          }
+        }
+      }
+    }
+  }
+}

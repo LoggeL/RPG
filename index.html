@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theater RPG</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="ui/styles/hud.css">
+  <link rel="stylesheet" href="ui/styles/transitions.css">
+  <link rel="stylesheet" href="ui/styles/dialogue.css">
+  <link rel="stylesheet" href="ui/styles/inventory.css">
+  <link rel="stylesheet" href="ui/styles/quest-log.css">
+  <link rel="stylesheet" href="ui/styles/menu.css">
+  <link rel="stylesheet" href="ui/styles/tilemap.css">
+</head>
+<body>
+  <div id="game-container">
+    <!-- HUD -->
+    <header id="hud">
+      <button id="btn-menu" class="hud-btn" title="Menü">☰</button>
+      <div id="hud-location">
+        <span id="hud-world-name"></span>
+        <span id="hud-separator">—</span>
+        <span id="hud-room-name"></span>
+      </div>
+      <div id="hud-actions">
+        <button id="btn-quests" class="hud-btn" title="Quests">📜</button>
+        <button id="btn-inventory" class="hud-btn" title="Inventar">🎒</button>
+      </div>
+    </header>
+
+    <!-- Main viewport -->
+    <main id="viewport">
+      <!-- Curtain transition overlay -->
+      <div id="curtain-left" class="curtain"></div>
+      <div id="curtain-right" class="curtain"></div>
+
+      <!-- Room content -->
+      <div id="room">
+        <div id="room-background"></div>
+        <div id="room-entities"></div>
+        <div id="room-description"></div>
+      </div>
+
+      <!-- Exit buttons -->
+      <nav id="exits">
+        <div id="exit-north" class="exit-slot"></div>
+        <div id="exit-east" class="exit-slot"></div>
+        <div id="exit-south" class="exit-slot"></div>
+        <div id="exit-west" class="exit-slot"></div>
+      </nav>
+    </main>
+
+    <!-- Dialogue overlay -->
+    <div id="dialogue-overlay" class="hidden"></div>
+
+    <!-- Inventory panel -->
+    <div id="inventory-panel" class="hidden"></div>
+
+    <!-- Quest log panel -->
+    <div id="quest-log-panel" class="hidden"></div>
+
+    <!-- Menu overlay -->
+    <div id="menu-overlay" class="hidden"></div>
+
+    <!-- Notification area -->
+    <div id="notification-area"></div>
+  </div>
+
+  <script type="module" src="engine/main.js"></script>
+</body>
+</html>

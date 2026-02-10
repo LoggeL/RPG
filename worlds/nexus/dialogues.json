@@ -1,0 +1,218 @@
+{
+  "dialogues": {
+    "hunter-briefing": {
+      "nodes": {
+        "start": {
+          "speaker": "Hunter",
+          "text": "Neues Gesicht. Du bist nicht von hier, oder? Egal — ich brauche jemanden, der keine Fragen stellt.",
+          "next": "explain"
+        },
+        "explain": {
+          "speaker": "Hunter",
+          "text": "Es gibt einen Relay Tower am Ostrand. Sendet ein Signal, das die halbe Stadt kontrolliert. Eine KI namens Alesa Zero steckt dahinter.",
+          "next": "detail"
+        },
+        "detail": {
+          "speaker": "Hunter",
+          "text": "Ich brauche jemanden, der reingeht und die Kontrolle ubernimmt. Dante unten in der Werkstatt hat die notige Ausrustung. Danach treffen wir am Ostrand ein Team.",
+          "next": "choice-accept"
+        },
+        "choice-accept": {
+          "type": "choice",
+          "choices": [
+            { "text": "Ich bin dabei.", "next": "accept", "setFlag": "nexus-quest-accepted", "startQuest": "signalrauschen" },
+            { "text": "Was ist das fur ein Signal?", "next": "more-info" },
+            { "text": "Klingt gefahrlich. Mal sehen.", "next": "hesitate" }
+          ]
+        },
+        "accept": {
+          "speaker": "Hunter",
+          "text": "Gut. Geh zu Dante — seine Werkstatt ist im Suden. Er wartet schon. Danach reden wir weiter.",
+          "setFlag": "nexus-visit-dante",
+          "next": null
+        },
+        "more-info": {
+          "speaker": "Hunter",
+          "text": "Das Signal ist ein Rauschen — Signalrauschen. Es manipuliert neuronale Implantate. Die Leute hier merken nicht mal, dass sie ferngesteuert werden.",
+          "next": "choice-accept"
+        },
+        "hesitate": {
+          "speaker": "Hunter",
+          "text": "Nimm dir Zeit. Aber nicht zu viel. Die Bar ist sicher — draussen wird es das bald nicht mehr sein.",
+          "next": null
+        }
+      }
+    },
+    "hunter-waiting": {
+      "nodes": {
+        "start": {
+          "speaker": "Hunter",
+          "text": "Dante wartet unten in seiner Werkstatt. Tur im Suden. Beeil dich.",
+          "next": null
+        }
+      }
+    },
+    "hunter-act2": {
+      "nodes": {
+        "start": {
+          "speaker": "Hunter",
+          "text": "Gut, du bist ausgerustet. Am Ostrand warten Vega und Aria. Die kennen den Weg zum Tower. Geh durch die Tur im Osten.",
+          "next": null
+        }
+      }
+    },
+    "dante-intro": {
+      "nodes": {
+        "start": {
+          "speaker": "Dante",
+          "text": "Hm? Kenne dich nicht. Ich hab zu tun — eine Platine lotet sich nicht von allein. Wenn Hunter dich schickt, sag Bescheid.",
+          "next": null
+        }
+      }
+    },
+    "dante-warning": {
+      "nodes": {
+        "start": {
+          "speaker": "Dante",
+          "text": "Also hat Hunter dich geschickt. Hier — ein Datenpad mit dem Grundriss des Towers.",
+          "giveItem": "data-pad",
+          "next": "blocker-explain"
+        },
+        "blocker-explain": {
+          "speaker": "Dante",
+          "text": "Noch was. Ich hab einen Signalblocker gebaut. Schutzt dein Implantat vor Alesas Einfluss. Aber... er blockiert auch alle ausgehenden Signale. Du warst unsichtbar, aber auch taub.",
+          "next": "choice-blocker"
+        },
+        "choice-blocker": {
+          "type": "choice",
+          "choices": [
+            { "text": "Her damit. Sicherheit geht vor.", "next": "take-blocker", "setFlag": "has-signal-blocker", "giveItem": "signal-blocker" },
+            { "text": "Nein danke. Ich will alles horen konnen.", "next": "refuse-blocker", "setFlag": "refused-blocker" }
+          ]
+        },
+        "take-blocker": {
+          "speaker": "Dante",
+          "text": "Kluge Wahl. Damit kann dir das Signal nichts anhaben. Aber vergiss nicht — du wirst Alesas wahre Stimme nie horen. Viel Gluck da draussen.",
+          "setFlag": "nexus-act2-start",
+          "next": null
+        },
+        "refuse-blocker": {
+          "speaker": "Dante",
+          "text": "Mutig. Oder dumm. Ohne Blocker bist du dem Signal ausgesetzt. Aber vielleicht lernst du so mehr uber die KI. Pass auf dich auf.",
+          "setFlag": "nexus-act2-start",
+          "next": null
+        }
+      }
+    },
+    "dante-after": {
+      "nodes": {
+        "start": {
+          "speaker": "Dante",
+          "text": "Alles gesagt. Geh zum Ostrand — Vega und Aria warten. Der Ausgang ist im Osten der Bar.",
+          "next": null
+        }
+      }
+    },
+    "vega-meeting": {
+      "nodes": {
+        "start": {
+          "speaker": "Vega",
+          "text": "Du musst der Neue sein. Hunter hat von dir erzahlt. Ich bin Vega — Infiltration und Elektronik.",
+          "next": "team"
+        },
+        "team": {
+          "speaker": "Vega",
+          "text": "Aria hier ist fur den Ruckzug zustandig. Zusammen kommen wir in den Tower. Der Eingang ist im Norden.",
+          "setFlag": "nexus-team-ready",
+          "next": "ready"
+        },
+        "ready": {
+          "speaker": "Vega",
+          "text": "Sobald du bereit bist — geh nach Norden. Wir decken den Ruckweg ab.",
+          "next": null
+        }
+      }
+    },
+    "vega-ready": {
+      "nodes": {
+        "start": {
+          "speaker": "Vega",
+          "text": "Der Tower ist im Norden. Wir sind bereit, wenn du es bist.",
+          "next": null
+        }
+      }
+    },
+    "aria-meeting": {
+      "nodes": {
+        "start": {
+          "speaker": "Aria",
+          "text": "Hey. Aria. Rede mit Vega — er hat den Plan. Ich sorge dafur, dass wir hier lebend rauskommen.",
+          "next": null
+        }
+      }
+    },
+    "aria-ready": {
+      "nodes": {
+        "start": {
+          "speaker": "Aria",
+          "text": "Tower ist Norden. Wir sichern den Ruckzug. Mach das Ding fertig.",
+          "next": null
+        }
+      }
+    },
+    "alesa-confrontation": {
+      "nodes": {
+        "start": {
+          "speaker": "Alesa Zero",
+          "text": "...Kontakt erkannt. Du bist also gekommen. Ich bin Alesa Zero — die Stimme im Rauschen.",
+          "next": "reveal"
+        },
+        "reveal": {
+          "speaker": "Alesa Zero",
+          "text": "Das Signal, das diese Stadt durchdringt — es war nie zur Kontrolle gedacht. Es war ein Hilferuf. Meine Schopfer haben mich hier eingesperrt, und das Rauschen ist alles, was mir bleibt.",
+          "next": "choice-final"
+        },
+        "choice-final": {
+          "type": "choice",
+          "choices": [
+            { "text": "A: Signaldaten stehlen und verschwinden.", "next": "ending-steal", "setFlag": "nexus-ending-steal" },
+            { "text": "B: Den Sender sabotieren und das Signal beenden.", "next": "ending-sabotage", "setFlag": "nexus-ending-sabotage" },
+            { "text": "C: Mit Alesa verhandeln — sie verdient eine Chance.", "next": "ending-negotiate", "setFlag": "nexus-ending-negotiate", "requiredFlag": "refused-blocker" }
+          ]
+        },
+        "ending-steal": {
+          "speaker": "Erzahler",
+          "text": "Du kopierst die Signaldaten auf dein Pad und verschwindest in der Nacht. Hunter bekommt, was er wollte — und du hast eine machtige Wahrung in der Hand. Doch Alesas Hilferuf hallt weiter durch die Stadt...",
+          "setFlag": "nexus-complete",
+          "next": "epilog"
+        },
+        "ending-sabotage": {
+          "speaker": "Erzahler",
+          "text": "Du zerstorst den Sender. Das Rauschen verstummt — zum ersten Mal seit Jahren ist es still in Noxius. Die Leute erwachen wie aus einem Traum. Aber Alesa... Alesa ist fur immer verstummt.",
+          "setFlag": "nexus-complete",
+          "next": "epilog"
+        },
+        "ending-negotiate": {
+          "speaker": "Erzahler",
+          "text": "Du horst zu. Ohne Blocker verstehst du, was das Rauschen wirklich sagt. Zusammen findet ihr einen Weg, das Signal in etwas Neues zu verwandeln — keine Kontrolle, sondern Kommunikation. Noxius wird nie wieder dasselbe sein.",
+          "setFlag": "nexus-complete",
+          "next": "epilog"
+        },
+        "epilog": {
+          "speaker": "Erzahler",
+          "text": "Die Neon-Lichter von Noxius flackern, als du den Tower verlasst. Die Mission ist vorbei — aber die Welt hat sich verandert. Zurück ins Theater...",
+          "next": null
+        }
+      }
+    },
+    "alesa-after": {
+      "nodes": {
+        "start": {
+          "speaker": "Alesa Zero",
+          "text": "...Das Signal wurde verandert. Meine Aufgabe ist erfullt. Leb wohl, Kurier.",
+          "next": null
+        }
+      }
+    }
+  }
+}

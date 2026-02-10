@@ -1,0 +1,13 @@
+{
+  "items": {
+    "old-program": {
+      "id": "old-program",
+      "name": "Altes Programmheft",
+      "description": "Ein vergilbtes Programmheft von der letzten Aufführung. Die Tinte ist kaum noch lesbar.",
+      "type": "lore",
+      "sprite": "📜",
+      "room": "backstage",
+      "position": { "x": 30, "y": 65 }
+    }
+  }
+}

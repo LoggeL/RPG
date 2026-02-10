@@ -1,0 +1,23 @@
+{
+  "items": {
+    "rusty-key": {
+      "id": "rusty-key",
+      "name": "Rostiger Schlüssel",
+      "description": "Ein alter, rostiger Schlüssel. Er passt bestimmt zu einer Tür hier.",
+      "type": "key",
+      "sprite": "🗝️",
+      "room": "rehearsal-room",
+      "position": { "x": 35, "y": 70 },
+      "setFlagOnPickup": "prop-room-key"
+    },
+    "golden-mask": {
+      "id": "golden-mask",
+      "name": "Goldene Theatermaske",
+      "description": "Eine prachtvolle goldene Maske, die vor magischer Energie pulsiert. Das verlorene Requisit des Grand Théâtre.",
+      "type": "master-item",
+      "sprite": "🎭",
+      "room": "prop-room",
+      "position": { "x": 55, "y": 55 }
+    }
+  }
+}

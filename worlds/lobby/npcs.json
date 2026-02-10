@@ -1,0 +1,18 @@
+{
+  "npcs": {
+    "sebastian": {
+      "id": "sebastian",
+      "name": "Sebastian",
+      "sprite": "🎭",
+      "spriteSVG": "<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewBox='0 0 40 48'><rect x='12' y='18' width='16' height='22' fill='#1a1040' rx='3'/><path d='M8 20 L6 42 L20 40 L34 42 L32 20 Z' fill='#8b1a1a' opacity='0.85'/><path d='M8 20 L6 42 L20 40 L34 42 L32 20 Z' fill='none' stroke='#a02030' stroke-width='0.5'/><circle cx='20' cy='12' r='7' fill='#e8c8a0'/><path d='M13 10 Q13 4 20 3 Q27 4 27 10 L27 9 Q27 3 20 2 Q13 3 13 9 Z' fill='#1a1008'/><circle cx='17.5' cy='11.5' r='1.1' fill='#222'/><circle cx='22.5' cy='11.5' r='1.1' fill='#222'/><path d='M17 15 Q20 17 23 15' fill='none' stroke='#aa8870' stroke-width='0.6'/><circle cx='20' cy='19' r='2' fill='#d4af37'/><rect x='16' y='6' width='8' height='3' fill='#d4af37' rx='1' opacity='0.8'/><rect x='14' y='4' width='12' height='3' fill='#1a1040' rx='1'/><rect x='12' y='40' width='6' height='5' fill='#1a1008' rx='1'/><rect x='22' y='40' width='6' height='5' fill='#1a1008' rx='1'/><rect x='8' y='24' width='3' height='12' fill='#e8c8a0' rx='1'/><rect x='29' y='24' width='3' height='12' fill='#e8c8a0' rx='1'/></svg>",
+      "position": { "x": 50, "y": 50 },
+      "dialogue": "sebastian-intro",
+      "dialogueConditions": [
+        { "flag": "nexus-complete", "dialogue": "sebastian-nexus-done" },
+        { "flag": "nexus-unlocked", "dialogue": "sebastian-nexus-waiting" },
+        { "flag": "placeholder-complete", "dialogue": "sebastian-happy" },
+        { "flag": "placeholder-unlocked", "dialogue": "sebastian-waiting" }
+      ]
+    }
+  }
+}

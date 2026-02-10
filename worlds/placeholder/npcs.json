@@ -1,0 +1,15 @@
+{
+  "npcs": {
+    "stage-technician": {
+      "id": "stage-technician",
+      "name": "Alter Bühnentechniker",
+      "sprite": "👴",
+      "position": { "x": 65, "y": 55 },
+      "dialogue": "technician-intro",
+      "dialogueConditions": [
+        { "flag": "prop-room-key", "dialogue": "technician-after-key" },
+        { "flag": "picked-up-golden-mask", "dialogue": "technician-mask-found" }
+      ]
+    }
+  }
+}

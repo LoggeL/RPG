@@ -1,0 +1,90 @@
+/* === Dialogue Overlay === */
+#dialogue-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  padding: 16px;
+}
+
+.dialogue-box {
+  max-width: 700px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, var(--color-surface) 0%, #151210 100%);
+  border: 1px solid var(--color-gold-dim);
+  border-radius: 6px;
+  padding: 1.2rem 1.5rem;
+  box-shadow: 0 -4px 24px rgba(0,0,0,0.6);
+}
+
+.dialogue-speaker {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--color-gold);
+  margin-bottom: 0.5rem;
+}
+
+.dialogue-text {
+  font-family: var(--font-dialogue);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  min-height: 2.4em;
+}
+
+.dialogue-text .cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: var(--color-gold);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.dialogue-continue {
+  text-align: right;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--color-text-dim);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Choices */
+.dialogue-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 1rem;
+}
+
+.dialogue-choice-btn {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  text-align: left;
+  background: rgba(212, 175, 55, 0.05);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  color: var(--color-text);
+  font-family: var(--font-dialogue);
+  font-size: 1rem;
+  transition: all var(--transition-speed);
+}
+
+.dialogue-choice-btn:hover {
+  background: rgba(212, 175, 55, 0.12);
+  border-color: var(--color-gold-dim);
+  color: var(--color-gold);
+  padding-left: 1.4rem;
+}

@@ -1,0 +1,18 @@
+{
+  "items": {
+    "data-pad": {
+      "id": "data-pad",
+      "name": "Datenpad",
+      "description": "Ein abgenutztes Datenpad mit dem Grundriss des Relay Towers. Dantes Handschrift ist kaum lesbar.",
+      "type": "quest",
+      "sprite": "📱"
+    },
+    "signal-blocker": {
+      "id": "signal-blocker",
+      "name": "Signalblocker",
+      "description": "Ein handgefertigtes Gerat, das neuronale Signale blockiert. Schutzt vor dem Rauschen, aber isoliert auch von der Aussenwelt.",
+      "type": "quest",
+      "sprite": "📡"
+    }
+  }
+}

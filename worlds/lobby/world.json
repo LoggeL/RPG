@@ -1,0 +1,179 @@
+{
+  "id": "lobby",
+  "name": "Theaterlobby",
+  "entryRoom": "main-hall",
+  "theme": {
+    "primaryColor": "#1a1410",
+    "accentColor": "#d4af37"
+  },
+  "rooms": {
+    "main-hall": {
+      "name": "Haupthalle",
+      "description": "Die prachtvolle Lobby des Grand Théâtre. Kristallleuchter werfen warmes Licht auf verblichene Samtsessel.",
+      "backgroundCSS": "radial-gradient(ellipse at 50% 30%, #2a1f14 0%, #1a1410 40%, #0d0a07 100%)",
+      "exits": {
+        "east": { "roomId": "backstage", "label": "Backstage" },
+        "north": { "roomId": "placeholder:entrance", "label": "Mysteriöse Tür", "locked": true, "requiredFlag": "placeholder-unlocked" }
+      },
+      "npcs": ["sebastian"],
+      "items": [],
+      "map": {
+        "width": 20,
+        "height": 15,
+        "theme": "theater-lobby",
+        "playerSpawn": { "x": 10, "y": 13 },
+        "layers": {
+          "ground": [
+            "wwwwwwwwwDwwwwwwwwww",
+            "wffccccccccccccccffw",
+            "wfccccccccccccccccfw",
+            "wfccccccccccccccccfw",
+            "wfccccccccccccccccfw",
+            "wfccccccccccccccccfw",
+            "wfccccccccccccccccfw",
+            "Pfccccocccccocccccfw",
+            "wfccccccccccccccccfw",
+            "wfccccccccccccccccfw",
+            "wfccccccccccccccccfw",
+            "wfccccccccccccccccfw",
+            "wfccccccccccccccccfw",
+            "wffccccccccccccccffw",
+            "wwwwwwwwwwwwwwwwwwEw"
+          ],
+          "objects": [
+            ".........d..........",
+            "....................",
+            "..C..............C..",
+            "....................",
+            "...s..........s.....",
+            "....................",
+            "......L....L........",
+            "....................",
+            "......L....L........",
+            "....................",
+            "...s..........s.....",
+            "....................",
+            "..C..............C..",
+            "....................",
+            "...................."
+          ]
+        },
+        "legend": {
+          "w": "wall",
+          "f": "floor",
+          "c": "carpet",
+          "o": "carpet-ornate",
+          "D": "door-locked",
+          "E": "door",
+          "d": "door-locked",
+          "C": "column",
+          "s": "velvet-seat",
+          "L": "chandelier",
+          "P": "door-portal",
+          "r": "railing",
+          ".": null
+        },
+        "exits": [
+          {
+            "tiles": [[9, 0]],
+            "target": "placeholder:entrance",
+            "label": "Mysteriöse Tür",
+            "locked": true,
+            "requiredFlag": "placeholder-unlocked",
+            "spawnAt": { "x": 8, "y": 10 }
+          },
+          {
+            "tiles": [[18, 14]],
+            "target": "backstage",
+            "label": "Backstage",
+            "spawnAt": { "x": 1, "y": 6 }
+          },
+          {
+            "tiles": [[0, 7]],
+            "target": "nexus:high-voltage",
+            "label": "Neon-Portal",
+            "locked": true,
+            "requiredFlag": "nexus-unlocked",
+            "spawnAt": { "x": 18, "y": 7 }
+          }
+        ],
+        "entities": {
+          "npcs": {
+            "sebastian": { "x": 10, "y": 7 }
+          },
+          "items": {}
+        }
+      }
+    },
+    "backstage": {
+      "name": "Hinter der Bühne",
+      "description": "Verstaubte Kulissen lehnen an den Wänden. Seile und Sandsäcke hängen von der Decke.",
+      "backgroundCSS": "linear-gradient(180deg, #151210 0%, #1a1510 30%, #0f0d0a 100%)",
+      "exits": {
+        "west": { "roomId": "main-hall", "label": "Zurück zur Halle" }
+      },
+      "npcs": [],
+      "items": ["old-program"],
+      "map": {
+        "width": 16,
+        "height": 12,
+        "theme": "theater-lobby",
+        "playerSpawn": { "x": 1, "y": 6 },
+        "layers": {
+          "ground": [
+            "wwwwwwwwwwwwwwww",
+            "wffffffffffffffw",
+            "wffffffffffffffw",
+            "wffffffffffffffw",
+            "wffffffffffffffw",
+            "wffffffffffffffw",
+            "Dffffffffffffffw",
+            "wffffffffffffffw",
+            "wffffffffffffffw",
+            "wffffffffffffffw",
+            "wffffffffffffffw",
+            "wwwwwwwwwwwwwwww"
+          ],
+          "objects": [
+            "................",
+            "..R.....S.......",
+            "................",
+            "................",
+            "......M.....K...",
+            "................",
+            "................",
+            "................",
+            "...........K....",
+            "................",
+            "..R.............",
+            "................"
+          ]
+        },
+        "legend": {
+          "w": "wall",
+          "f": "floor-dark",
+          "R": "rope",
+          "S": "shelf",
+          "M": "sheet-music",
+          "K": "crate",
+          "D": "door",
+          ".": null
+        },
+        "exits": [
+          {
+            "tiles": [[0, 6]],
+            "target": "main-hall",
+            "label": "Zurück zur Halle",
+            "spawnAt": { "x": 17, "y": 13 }
+          }
+        ],
+        "entities": {
+          "npcs": {},
+          "items": {
+            "old-program": { "x": 5, "y": 5 }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "dialogues": {
+    "sebastian-intro": {
+      "nodes": {
+        "start": {
+          "speaker": "Sebastian",
+          "text": "Ah, ein Besucher! Endlich... Ich bin Sebastian, der Direktor dieses Theaters. Oder was davon übrig ist.",
+          "next": "explain"
+        },
+        "explain": {
+          "speaker": "Sebastian",
+          "text": "Die kreative Energie dieses Ortes... sie ist verschwunden. Die Theaterstücke — sie haben ein Eigenleben entwickelt und die magischen Requisiten gestohlen!",
+          "next": "plea"
+        },
+        "plea": {
+          "speaker": "Sebastian",
+          "text": "Hinter jeder Tür verbirgt sich eine Theaterwelt. Wenn du die verlorenen Requisiten findest und zu mir bringst, können wir das Theater retten!",
+          "next": "choice-1"
+        },
+        "choice-1": {
+          "type": "choice",
+          "choices": [
+            { "text": "Ich werde dir helfen!", "next": "accept", "setFlag": "placeholder-unlocked", "startQuest": "placeholder-master" },
+            { "text": "Was genau ist passiert?", "next": "more-info" },
+            { "text": "Lass mich erst umsehen.", "next": "decline" }
+          ]
+        },
+        "accept": {
+          "speaker": "Sebastian",
+          "text": "Wunderbar! Die erste Tür im Norden führt zu einem vergessenen Proberaum. Finde die Goldene Theatermaske und bring sie mir. Sei vorsichtig!",
+          "next": null
+        },
+        "more-info": {
+          "speaker": "Sebastian",
+          "text": "Jedes Theaterstück wurde lebendig — eine eigene kleine Welt mit Figuren und Geschichten. Doch ohne die magischen Requisiten zerfällt alles. Auch dieses Theater.",
+          "next": "choice-1"
+        },
+        "decline": {
+          "speaker": "Sebastian",
+          "text": "Natürlich, sieh dich ruhig um. Aber bitte... zögere nicht zu lange. Die Zeit läuft uns davon.",
+          "next": null
+        }
+      }
+    },
+    "sebastian-waiting": {
+      "nodes": {
+        "start": {
+          "speaker": "Sebastian",
+          "text": "Hast du die Goldene Maske schon gefunden? Sie müsste irgendwo im vergessenen Proberaum sein. Geh durch die Tür im Norden!",
+          "next": "choice-w"
+        },
+        "choice-w": {
+          "type": "choice",
+          "choices": [
+            { "text": "Ich bin auf dem Weg!", "next": "encourage" },
+            { "text": "Gibt es einen Hinweis?", "next": "hint" }
+          ]
+        },
+        "encourage": {
+          "speaker": "Sebastian",
+          "text": "Viel Glück da drinnen! Und vergiss nicht — bring die Maske zu mir zurück.",
+          "next": null
+        },
+        "hint": {
+          "speaker": "Sebastian",
+          "text": "Der alte Bühnentechniker dort... er kennt jeden Winkel. Vielleicht kann er dir helfen.",
+          "next": null
+        }
+      }
+    },
+    "sebastian-happy": {
+      "nodes": {
+        "start": {
+          "speaker": "Sebastian",
+          "text": "Du hast es geschafft! Die Goldene Maske... ich kann die Energie spüren. Das Theater beginnt sich zu erholen!",
+          "next": "thanks"
+        },
+        "thanks": {
+          "speaker": "Sebastian",
+          "text": "Du bist ein wahrer Held der Bühne! Und sieh nur — dort an der Westwand! Eine neue Tür ist erschienen. Sie schimmert seltsam... neonfarben.",
+          "next": "portal-choice"
+        },
+        "portal-choice": {
+          "type": "choice",
+          "choices": [
+            { "text": "Was ist hinter dieser Tür?", "next": "portal-explain" },
+            { "text": "Ich werde sie mir ansehen.", "next": "portal-unlock", "setFlag": "nexus-unlocked" }
+          ]
+        },
+        "portal-explain": {
+          "speaker": "Sebastian",
+          "text": "Diese Tür... sie führt in eine andere Welt. Noxius 2086 — eine Stadt aus Neon und Stahl. Dort gibt es ein Signal, das die Bewohner kontrolliert. Jemand muss eingreifen.",
+          "next": "portal-choice-2"
+        },
+        "portal-choice-2": {
+          "type": "choice",
+          "choices": [
+            { "text": "Ich gehe hinein.", "next": "portal-unlock", "setFlag": "nexus-unlocked" },
+            { "text": "Vielleicht später.", "next": "portal-later" }
+          ]
+        },
+        "portal-unlock": {
+          "speaker": "Sebastian",
+          "text": "Sei vorsichtig da drinnen. Diese Welt ist... anders. Härter. Aber ich glaube an dich. Das Portal an der Westwand ist jetzt offen!",
+          "next": null
+        },
+        "portal-later": {
+          "speaker": "Sebastian",
+          "text": "Natürlich. Die Tür wird warten. Komm zu mir, wenn du bereit bist.",
+          "next": null
+        }
+      }
+    },
+    "sebastian-nexus-waiting": {
+      "nodes": {
+        "start": {
+          "speaker": "Sebastian",
+          "text": "Das Neon-Portal an der Westwand wartet auf dich. Noxius 2086 braucht deine Hilfe — das Signal muss gestoppt werden!",
+          "next": null
+        }
+      }
+    },
+    "sebastian-nexus-done": {
+      "nodes": {
+        "start": {
+          "speaker": "Sebastian",
+          "text": "Du bist zurück! Ich spüre es — die Energie aus Noxius strömt ins Theater. Du hast dort Großes vollbracht!",
+          "next": "celebrate"
+        },
+        "celebrate": {
+          "speaker": "Sebastian",
+          "text": "Zwei Welten gerettet... Das Theater wird stärker mit jeder Mission. Bald werden weitere Türen erscheinen. Ruh dich aus — du hast es verdient.",
+          "next": null
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,109 @@
+/* === Menu Overlay === */
+#menu-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.75);
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.menu-panel {
+  background: linear-gradient(180deg, var(--color-surface) 0%, #0f0d0a 100%);
+  border: 1px solid var(--color-gold-dim);
+  border-radius: 8px;
+  padding: 2rem;
+  min-width: 300px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+}
+
+.menu-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--color-gold);
+  margin-bottom: 1.5rem;
+}
+
+.menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.menu-btn {
+  padding: 0.7rem 1.5rem;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  color: var(--color-text);
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all var(--transition-speed);
+}
+
+.menu-btn:hover {
+  background: rgba(212, 175, 55, 0.15);
+  border-color: var(--color-gold-dim);
+  color: var(--color-gold);
+}
+
+.menu-btn.danger {
+  color: var(--color-red-light);
+}
+
+.menu-btn.danger:hover {
+  background: rgba(139, 26, 26, 0.15);
+  border-color: var(--color-red);
+}
+
+/* Save slots */
+.save-slots {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 1rem 0;
+}
+
+.save-slot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1rem;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  color: var(--color-text);
+  font-size: 0.85rem;
+  transition: all var(--transition-speed);
+}
+
+.save-slot:hover {
+  border-color: var(--color-gold-dim);
+}
+
+.save-slot-info {
+  text-align: left;
+}
+
+.save-slot-name {
+  font-weight: 500;
+}
+
+.save-slot-date {
+  font-size: 0.7rem;
+  color: var(--color-text-dim);
+}
+
+.save-slot-empty {
+  color: var(--color-text-dim);
+  font-style: italic;
+}

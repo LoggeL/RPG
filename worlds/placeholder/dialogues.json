@@ -1,0 +1,64 @@
+{
+  "dialogues": {
+    "technician-intro": {
+      "nodes": {
+        "start": {
+          "speaker": "Alter Bühnentechniker",
+          "text": "Hmm? Ein Fremder? Hier kommt schon lange niemand mehr her...",
+          "next": "explain"
+        },
+        "explain": {
+          "speaker": "Alter Bühnentechniker",
+          "text": "Ich bin der Letzte, der sich an das vergessene Stück erinnert. Es war einmal das großartigste Theater der Welt... bevor die Maske verschwand.",
+          "next": "choice-1"
+        },
+        "choice-1": {
+          "type": "choice",
+          "choices": [
+            { "text": "Wo ist die Maske?", "next": "hint" },
+            { "text": "Was ist das für ein Ort?", "next": "lore" },
+            { "text": "Ich sehe mich mal um.", "next": "bye" }
+          ]
+        },
+        "hint": {
+          "speaker": "Alter Bühnentechniker",
+          "text": "Die Goldene Maske liegt im Requisitenraum, aber der ist verschlossen. Den Schlüssel... den habe ich irgendwo im Proberaum verloren. Meine alten Knochen schaffen die Suche nicht mehr.",
+          "next": "bye"
+        },
+        "lore": {
+          "speaker": "Alter Bühnentechniker",
+          "text": "Dies war der Proberaum des Grand Théâtre. Hier haben die größten Schauspieler ihre Rollen einstudiert. Jetzt ist es nur noch ein Echo vergangener Zeiten.",
+          "next": "choice-1"
+        },
+        "bye": {
+          "speaker": "Alter Bühnentechniker",
+          "text": "Pass auf dich auf da drinnen. Und wenn du den Schlüssel findest... der Requisitenraum ist im Osten des Proberaums.",
+          "next": null
+        }
+      }
+    },
+    "technician-after-key": {
+      "nodes": {
+        "start": {
+          "speaker": "Alter Bühnentechniker",
+          "text": "Du hast den Schlüssel gefunden! Gut gemacht. Jetzt kannst du den Requisitenraum öffnen. Die Maske wartet dort auf dich.",
+          "next": "encourage"
+        },
+        "encourage": {
+          "speaker": "Alter Bühnentechniker",
+          "text": "Bring die Maske zum Direktor — zu Sebastian. Er wird wissen, was zu tun ist.",
+          "next": null
+        }
+      }
+    },
+    "technician-mask-found": {
+      "nodes": {
+        "start": {
+          "speaker": "Alter Bühnentechniker",
+          "text": "Du hast sie! Die Goldene Theatermaske! Ich kann ihre Energie spüren... Schnell, bring sie zu Sebastian in der Lobby!",
+          "next": null
+        }
+      }
+    }
+  }
+}

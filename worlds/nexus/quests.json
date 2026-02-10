@@ -1,0 +1,18 @@
+{
+  "quests": {
+    "signalrauschen": {
+      "id": "signalrauschen",
+      "name": "Signalrauschen",
+      "description": "Infiltriere den Relay Tower und entscheide uber das Schicksal des Signals, das Noxius kontrolliert.",
+      "stages": [
+        { "id": "visit-dante", "description": "Besuche Dante in seiner Werkstatt", "type": "dialogue", "targetNpc": "dante" },
+        { "id": "meet-team", "description": "Triff das Team am Ostrand", "type": "dialogue", "targetNpc": "vega" },
+        { "id": "confront-alesa", "description": "Konfrontiere Alesa Zero im Relay Tower", "type": "dialogue", "targetNpc": "alesa-zero" }
+      ],
+      "rewards": {
+        "flags": ["nexus-complete"]
+      },
+      "isMasterQuest": true
+    }
+  }
+}

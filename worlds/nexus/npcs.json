@@ -1,0 +1,62 @@
+{
+  "npcs": {
+    "hunter": {
+      "id": "hunter",
+      "name": "Hunter",
+      "sprite": "🕵",
+      "spriteSVG": "<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewBox='0 0 40 48'><rect x='12' y='18' width='16' height='22' fill='#1a1e2c' rx='2'/><path d='M8 20 L6 42 L20 40 L34 42 L32 20 Z' fill='#111420' opacity='0.85'/><path d='M8 20 L6 42 L20 40 L34 42 L32 20 Z' fill='none' stroke='#00e5ff' stroke-width='0.5' opacity='0.3'/><circle cx='20' cy='12' r='7' fill='#c8a882'/><path d='M13 10 Q13 4 20 3 Q27 4 27 10' fill='#0a0c14'/><rect x='13' y='5' width='14' height='4' fill='#111420' rx='1'/><rect x='11' y='7' width='18' height='3' fill='#111420' rx='1'/><rect x='15' y='10' width='4' height='2' fill='#00e5ff' opacity='0.7' rx='0.5'/><rect x='21' y='10' width='4' height='2' fill='#00e5ff' opacity='0.7' rx='0.5'/><path d='M17 15 Q20 16.5 23 15' fill='none' stroke='#a08870' stroke-width='0.5'/><line x1='16' y1='22' x2='16' y2='30' stroke='#00e5ff' stroke-width='0.3' opacity='0.2'/><line x1='24' y1='22' x2='24' y2='30' stroke='#00e5ff' stroke-width='0.3' opacity='0.2'/><circle cx='20' cy='19' r='1.5' fill='#00e5ff' opacity='0.4'/><rect x='12' y='40' width='6' height='5' fill='#0a0c14' rx='1'/><rect x='22' y='40' width='6' height='5' fill='#0a0c14' rx='1'/></svg>",
+      "position": { "x": 50, "y": 50 },
+      "dialogue": "hunter-briefing",
+      "dialogueConditions": [
+        { "flag": "nexus-complete", "dialogue": "hunter-act2" },
+        { "flag": "nexus-act2-start", "dialogue": "hunter-act2" },
+        { "flag": "nexus-quest-accepted", "dialogue": "hunter-waiting" }
+      ]
+    },
+    "dante": {
+      "id": "dante",
+      "name": "Dante",
+      "sprite": "🔧",
+      "spriteSVG": "<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewBox='0 0 40 48'><rect x='12' y='18' width='16' height='22' fill='#2a1a0a' rx='2'/><path d='M10 20 L8 42 L20 40 L32 42 L30 20 Z' fill='#1a1208' opacity='0.85'/><circle cx='20' cy='12' r='7' fill='#c8a882'/><path d='M13 10 Q13 5 20 4 Q27 5 27 10' fill='#3a2010'/><rect x='14' y='4' width='12' height='5' fill='#3a2010' rx='1'/><circle cx='17.5' cy='11.5' r='1.1' fill='#222'/><circle cx='22.5' cy='11.5' r='1.1' fill='#222'/><rect x='14' y='8' width='12' height='2' fill='#ff00aa' opacity='0.15' rx='1'/><path d='M17 15 Q20 16 23 15' fill='none' stroke='#a08870' stroke-width='0.5'/><rect x='28' y='28' width='8' height='3' fill='#424242' rx='1'/><rect x='34' y='26' width='3' height='7' fill='#424242' rx='1'/><rect x='12' y='40' width='6' height='5' fill='#1a1208' rx='1'/><rect x='22' y='40' width='6' height='5' fill='#1a1208' rx='1'/></svg>",
+      "position": { "x": 50, "y": 50 },
+      "dialogue": "dante-intro",
+      "dialogueConditions": [
+        { "flag": "nexus-act2-start", "dialogue": "dante-after" },
+        { "flag": "nexus-visit-dante", "dialogue": "dante-warning" }
+      ]
+    },
+    "vega": {
+      "id": "vega",
+      "name": "Vega",
+      "sprite": "⚡",
+      "spriteSVG": "<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewBox='0 0 40 48'><rect x='12' y='18' width='16' height='22' fill='#1a2a1a' rx='2'/><path d='M10 20 L8 42 L20 40 L32 42 L30 20 Z' fill='#0a1a0a' opacity='0.85'/><path d='M10 20 L8 42 L20 40 L34 42 L32 20 Z' fill='none' stroke='#76ff03' stroke-width='0.5' opacity='0.3'/><circle cx='20' cy='12' r='7' fill='#b89870'/><path d='M13 9 Q13 3 20 2 Q27 3 27 9' fill='#1a1008'/><rect x='14' y='3' width='12' height='4' fill='#1a1008' rx='1'/><rect x='15' y='10' width='4' height='2' fill='#76ff03' opacity='0.6' rx='0.5'/><rect x='21' y='10' width='4' height='2' fill='#76ff03' opacity='0.6' rx='0.5'/><path d='M16 15 Q20 17 24 15' fill='none' stroke='#907860' stroke-width='0.5'/><circle cx='20' cy='19' r='1.5' fill='#76ff03' opacity='0.4'/><line x1='15' y1='24' x2='15' y2='32' stroke='#76ff03' stroke-width='0.3' opacity='0.2'/><line x1='25' y1='24' x2='25' y2='32' stroke='#76ff03' stroke-width='0.3' opacity='0.2'/><rect x='12' y='40' width='6' height='5' fill='#0a1a0a' rx='1'/><rect x='22' y='40' width='6' height='5' fill='#0a1a0a' rx='1'/></svg>",
+      "position": { "x": 50, "y": 50 },
+      "dialogue": "vega-meeting",
+      "dialogueConditions": [
+        { "flag": "nexus-team-ready", "dialogue": "vega-ready" }
+      ]
+    },
+    "aria": {
+      "id": "aria",
+      "name": "Aria",
+      "sprite": "🎯",
+      "spriteSVG": "<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewBox='0 0 40 48'><rect x='12' y='18' width='16' height='22' fill='#2a1028' rx='2'/><path d='M10 20 L8 42 L20 40 L32 42 L30 20 Z' fill='#1a0818' opacity='0.85'/><path d='M10 20 L8 42 L20 40 L32 42 L30 20 Z' fill='none' stroke='#ff00aa' stroke-width='0.5' opacity='0.3'/><circle cx='20' cy='12' r='7' fill='#d4b090'/><path d='M13 10 Q12 4 20 3 Q28 4 27 10' fill='#2a1028'/><path d='M13 10 L11 16' stroke='#2a1028' stroke-width='2'/><path d='M27 10 L29 16' stroke='#2a1028' stroke-width='2'/><circle cx='17.5' cy='11.5' r='1.1' fill='#222'/><circle cx='22.5' cy='11.5' r='1.1' fill='#222'/><path d='M17 15 Q20 16.5 23 15' fill='none' stroke='#b09878' stroke-width='0.5'/><circle cx='20' cy='19' r='1.5' fill='#ff00aa' opacity='0.4'/><rect x='12' y='40' width='6' height='5' fill='#1a0818' rx='1'/><rect x='22' y='40' width='6' height='5' fill='#1a0818' rx='1'/></svg>",
+      "position": { "x": 50, "y": 50 },
+      "dialogue": "aria-meeting",
+      "dialogueConditions": [
+        { "flag": "nexus-team-ready", "dialogue": "aria-ready" }
+      ]
+    },
+    "alesa-zero": {
+      "id": "alesa-zero",
+      "name": "Alesa Zero",
+      "sprite": "🤖",
+      "spriteSVG": "<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewBox='0 0 40 48'><rect x='12' y='18' width='16' height='22' fill='#161a28' rx='2'/><rect x='10' y='20' width='20' height='18' fill='#1a1e2c' rx='2'/><line x1='14' y1='22' x2='14' y2='36' stroke='#76ff03' stroke-width='0.3' opacity='0.3'/><line x1='20' y1='22' x2='20' y2='36' stroke='#76ff03' stroke-width='0.3' opacity='0.3'/><line x1='26' y1='22' x2='26' y2='36' stroke='#76ff03' stroke-width='0.3' opacity='0.3'/><rect x='13' y='5' width='14' height='14' fill='#1a1e2c' rx='3'/><rect x='15' y='7' width='10' height='10' fill='#111420' rx='2'/><rect x='16' y='9' width='3' height='3' fill='#76ff03' opacity='0.7' rx='0.5'/><rect x='21' y='9' width='3' height='3' fill='#76ff03' opacity='0.7' rx='0.5'/><line x1='17' y1='14' x2='23' y2='14' stroke='#76ff03' stroke-width='0.5' opacity='0.4'/><rect x='11' y='4' width='18' height='2' fill='#424242' rx='1'/><line x1='16' y1='4' x2='14' y2='0' stroke='#424242' stroke-width='1'/><line x1='24' y1='4' x2='26' y2='0' stroke='#424242' stroke-width='1'/><circle cx='14' cy='0' r='1' fill='#76ff03' opacity='0.5'/><circle cx='26' cy='0' r='1' fill='#76ff03' opacity='0.5'/><rect x='12' y='40' width='6' height='5' fill='#111420' rx='1'/><rect x='22' y='40' width='6' height='5' fill='#111420' rx='1'/></svg>",
+      "position": { "x": 50, "y": 50 },
+      "dialogue": "alesa-confrontation",
+      "dialogueConditions": [
+        { "flag": "nexus-complete", "dialogue": "alesa-after" }
+      ]
+    }
+  }
+}

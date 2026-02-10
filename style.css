@@ -1,0 +1,286 @@
+/* === CSS Variables === */
+:root {
+  --color-bg: #0d0d0d;
+  --color-bg-elevated: #1a1410;
+  --color-gold: #d4af37;
+  --color-gold-dim: #a68a2a;
+  --color-red: #8b1a1a;
+  --color-red-light: #b22222;
+  --color-text: #e8e0d0;
+  --color-text-dim: #a09080;
+  --color-surface: #1e1a15;
+  --color-border: #3a3020;
+
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-dialogue: 'Crimson Text', 'Times New Roman', serif;
+  --font-ui: 'Inter', system-ui, sans-serif;
+
+  --hud-height: 48px;
+  --transition-speed: 0.3s;
+}
+
+/* === Reset & Base === */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+  color: var(--color-text);
+  font-family: var(--font-ui);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* === Game Container === */
+#game-container {
+  width: 100%;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+/* === Viewport === */
+#viewport {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === Room === */
+#room {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#room-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+#room-entities {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#room-entities > * {
+  pointer-events: auto;
+}
+
+#room-description {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 600px;
+  text-align: center;
+  font-family: var(--font-dialogue);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--color-text-dim);
+  padding: 0.5rem 1.5rem;
+  background: rgba(13, 13, 13, 0.7);
+  border-radius: 4px;
+  z-index: 2;
+  opacity: 0;
+  animation: fadeInDescription 1s ease 0.5s forwards;
+}
+
+@keyframes fadeInDescription {
+  to { opacity: 1; }
+}
+
+/* === Exits === */
+#exits {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.exit-slot {
+  position: absolute;
+  pointer-events: auto;
+}
+
+#exit-north { top: 8px; left: 50%; transform: translateX(-50%); }
+#exit-south { bottom: 8px; left: 50%; transform: translateX(-50%); }
+#exit-east { right: 8px; top: 50%; transform: translateY(-50%); }
+#exit-west { left: 8px; top: 50%; transform: translateY(-50%); }
+
+.exit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1.2rem;
+  background: rgba(26, 20, 16, 0.85);
+  border: 1px solid var(--color-gold-dim);
+  border-radius: 4px;
+  color: var(--color-gold);
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all var(--transition-speed);
+  white-space: nowrap;
+}
+
+.exit-btn:hover {
+  background: rgba(212, 175, 55, 0.15);
+  border-color: var(--color-gold);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
+}
+
+.exit-btn.locked {
+  color: var(--color-text-dim);
+  border-color: var(--color-border);
+  cursor: not-allowed;
+}
+
+.exit-btn.locked:hover {
+  background: rgba(26, 20, 16, 0.85);
+  border-color: var(--color-border);
+  box-shadow: none;
+}
+
+.exit-btn .exit-arrow {
+  font-size: 1rem;
+}
+
+/* === Entity (NPC / Item) === */
+.entity {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.entity:hover {
+  transform: translate(-50%, -100%) scale(1.08);
+}
+
+.entity-sprite {
+  font-size: 2.5rem;
+  line-height: 1;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+}
+
+.entity-sprite-svg {
+  font-size: inherit;
+  line-height: 1;
+}
+
+.entity-sprite-svg svg {
+  display: block;
+  width: 40px;
+  height: 48px;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+}
+
+.entity-label {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+  white-space: nowrap;
+}
+
+.entity.item .entity-label {
+  color: var(--color-text);
+}
+
+.entity.item .entity-sprite {
+  animation: itemFloat 3s ease-in-out infinite;
+}
+
+@keyframes itemFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* === Tile Mode: hide exit buttons === */
+#room.tile-mode ~ #exits {
+  display: none;
+}
+
+/* === Notification Area === */
+#notification-area {
+  position: fixed;
+  top: 60px;
+  right: 16px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.notification {
+  padding: 0.6rem 1.2rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-gold-dim);
+  border-radius: 4px;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: var(--color-text);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+  animation: notifSlideIn 0.3s ease, notifFadeOut 0.5s ease 2.5s forwards;
+  pointer-events: auto;
+}
+
+@keyframes notifSlideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes notifFadeOut {
+  to { transform: translateX(100%); opacity: 0; }
+}
+
+/* === Scrollbar === */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
